@@ -44,4 +44,4 @@ Trace references backward from the closest work and forward through citing paper
 Do not claim novelty merely because a search for the exact phrase “weight-space contagion” returns few results. Treat any paper demonstrating the same operational mechanism under different terminology as prior art. If an existing work already demonstrates P2 or P3 under equivalent criteria, revise the contribution accordingly. Make no priority claim until the full screening is documented.
 
 ## Current status
-This protocol is prepared but not executed systematically. The preliminary related-work map is exploratory and must not be described as a systematic review.
+This protocol is a review aid and has not been executed systematically. The preliminary related-work map is exploratory and must not be described as a systematic review. The repository author is not undertaking experiments; this document does not constitute an experimental commitment.
