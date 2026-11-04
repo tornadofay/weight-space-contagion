@@ -3,10 +3,10 @@
 This file governs research planning, documentation, experiments, and publication claims. Read it before changing project content.
 
 ## 1. Source of truth
-- This repository is the source of truth for research questions, definitions, decisions, experimental plans, evidence, and publication status.
+- This repository is the source of truth for the problem statement, definitions, research decisions, literature review, and publication status.
 - Never invent a paper, result, experiment, source, or verification outcome.
 - Distinguish prior published facts, hypotheses, observations, interpretations, and conclusions.
-- The accepted experiment plan controls experiment-specific details; this constitution controls integrity and safety.
+- No experimental protocol has been approved or adopted by the repository author. Any future protocol would be owned by the independent team conducting that work; this constitution records the project's integrity and safety boundaries.
 
 ## 2. Research objective
 The repository formulates two related questions. First, can a donor model's condition-dependent behavior be transferred into a distinct recipient's own parameters through a parameter-changing operation? Second, can that recipient later serve as the source for a further transfer, with its own parameter-carried information causally necessary? The first is a possible P2 event; it is not, by itself, generational contagion. The second is the stronger P3 question.
@@ -57,7 +57,7 @@ This section applies only if a qualified independent team elects to conduct a fu
 A second-generation claim requires A→B→C where B independently carries the marker, A and A-side state are absent in the second transfer, B is the source for B→C, marker contents are not supplied to the operator/editor, and clean-source controls do not produce a comparable result.
 
 ## 7. Publication claims
-- The repository is a proposal and conceptual working paper, not an empirical demonstration.
+- The repository is a conceptual problem statement and threat-model proposal, not an empirical demonstration.
 - Do not use “demonstrated,” “proven,” “discovered,” or “autonomous” beyond evidence.
 - Cite original sources and identify blogs, preprints, peer-reviewed papers, and technical reports accurately.
 - Do not claim priority from a limited search.
