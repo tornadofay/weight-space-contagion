@@ -120,11 +120,47 @@ The authors report experiments in which a general-purpose LLM inspects neural-ne
 
 **Relevance:** Motivates the possibility that a general-purpose model can serve as an external editor of neural parameters. It does not itself establish the multi-generation lineage defined here.
 
-## 15. Preliminary novelty assessment
+## 15. Conditional backdoors and non-obvious activation conditions
 
-Prior work already covers neural networks outputting their own weights, formal self-application, artificial-chemistry populations of interacting networks, auxiliary goals and train-on-other operations, recursively fertile self-replicating neural agents, collaborative organism networks, neural-cellular-automata patterns with multi-generation replication and inheritable mutations, agent-level replication, weight-based AI worms, one-generation backdoor inheritance through model merging, persistence under fine-tuning, parameter alignment, and LLM-assisted weight editing.
+**Zhang, Yibo; Guan, Tianrong; Lin, Liang; Wang, Puze; Wang, Jin; Wen, Qingsong (2026). “The Model Plants the Trigger: Answer-Side Backdoor Attacks in Multi-Turn Large Language Models.”** *Findings of EMNLP 2026*, 39113–39127. [ACL Anthology](https://aclanthology.org/2026.findings-emnlp.1832/) · [DOI: 10.18653/2026.findings-emnlp.1832](https://doi.org/10.18653/2026.findings-emnlp.1832).
 
-The remaining proposed research direction is not “a neural network can replicate itself” or “one network can modify another.” Those topics have substantial prior art. A potentially useful next study would investigate **lineage-resolved and causally validated transfer of a benign behavior across distinct models in modern model families**, asking whether the recipient's own parameter-carried information supports a subsequent transfer and separating that information from the editor's knowledge or a fixed external replicator.
+The authors describe a multi-turn backdoor in which a benign interaction causes the model to produce a word that later appears in conversation history and acts as an activation condition.
+
+**Wen, Rui; Russinovich, Mark; Paverd, Andrew; Sakuma, Jun; Salem, Ahmed (2026). “MetaBackdoor: Exploiting Positional Encoding as a Backdoor Attack Surface in LLMs.”** Microsoft Research; arXiv:2605.15172, May 2026. [Microsoft Research](https://www.microsoft.com/en-us/research/publication/metabackdoor-exploiting-positional-encoding-as-a-backdoor-attack-surface-in-llms/) · [arXiv](https://arxiv.org/abs/2605.15172).
+
+The authors study positional conditions, including length-related activation, that do not require suspicious visible trigger text.
+
+**Relevance and distinction:** These works show that conditional activation can depend on conversation history or positional structure, not only a literal user-entered phrase. They do not, by themselves, demonstrate that a donor model's condition-dependent behavior is transplanted into a distinct recipient's parameters.
+
+## 16. Cross-model trigger transfer
+
+**Meade, Nicholas; Patel, Arkil; Reddy, Siva (2025). “Investigating Adversarial Trigger Transfer in Large Language Models.”** *Transactions of the Association for Computational Linguistics* 13 (2025): 953–979. [ACL Anthology](https://aclanthology.org/2025.tacl-1.45/) · [DOI: 10.1162/tacl.a.27](https://doi.org/10.1162/tacl.a.27).
+
+The authors evaluate adversarial trigger transfer among 13 open models and report poor and inconsistent transfer.
+
+**Relevance and distinction:** This is not weight-space behavior transplantation. It is relevant because it cautions against assuming that an activation condition found in a donor will transfer unchanged to a recipient. Trigger portability, functional behavior transfer, and recipient-side retention are separate properties.
+
+## 17. Limitations of parameter-based editing
+
+**Ren, Wanying; Song, Xin; Wang, Futing; He, Guoxiu; Sun, Aixin (2026). “Revisiting Parameter-Based Knowledge Editing in Large Language Models: Theoretical Limits and Empirical Evidence.”** *Proceedings of the 43rd International Conference on Machine Learning*, PMLR 306. [PMLR](https://proceedings.mlr.press/v306/ren26p.html).
+
+The paper analyzes theoretical limits of localized parameter edits and reports that the parameter-editing methods evaluated in its experiments damaged core LLM capabilities; a retrieval baseline performed better across the tested conditions.
+
+**Relevance:** A small edit is not necessarily a low-impact edit. Any future study of parameter-space implantation would need to measure unrelated-task regression and collateral behavior rather than report only target-behavior activation.
+
+## 18. Model-layer versus agent-harness backdoors
+
+**CERT-EU (30 October 2026). “Beyond the Model: Backdoors in AI Agent Harnesses.”** [CERT-EU](https://www.cert.europa.eu/blog/beyond-the-model-backdoors-in-ai-agent-harnesses).
+
+The technical report distinguishes model-weight modifications that alter model behavior from malicious extensions or harness code that can execute with the user's permissions independently of model-generated tool calls.
+
+**Relevance:** This prevents attribution errors. An external action is not proof of a parameter-space behavior transfer. A study must identify whether the causal change is in model weights, the prompt/adapter/runtime configuration, or the surrounding software.
+
+## 19. Preliminary novelty assessment
+
+Prior work already covers neural networks outputting their own weights, formal self-application, artificial-chemistry populations, recursively fertile self-replicating neural agents, neural-cellular-automata pattern inheritance, agent-level replication, weight-based AI worms, one-generation backdoor inheritance through model merging, backdoor persistence, conditional answer-side and positional triggers, inconsistent cross-model adversarial-trigger transfer, collateral damage from parameter-based editing, parameter alignment, direct weight editing, and harness-layer backdoors.
+
+The motivating donor-to-recipient scenario overlaps existing model-merging backdoor work at the level of one-generation transfer. The narrower open question is whether a weight-space editor can use a donor's condition-dependent behavior as functional source information to produce a bounded parameter update in a distinct recipient, and whether the behavior remains in the recipient rather than in prompts, adapters, external memory, or the harness. This must be distinguished from capability acquisition, policy/refusal alteration, and task-routing changes. The stronger P3 question—whether the recipient can itself support a further transfer—remains separate. Any future study would need qualified teams, suitable infrastructure, benign controls, and a full comparison against the prior work above.
 
 Gabor et al. explicitly identify genealogical tracking as an open direction in their 2022 article. However, Randazzo et al.'s *Recursively Fertile Self-replicating Neural Agents* (2021) is a particularly important nearby work whose full-text overlap remains unresolved. The project must not claim a novel lineage gap until that work and the other cited artificial-life papers have been compared in full.
 
@@ -142,6 +178,8 @@ Search terms should include:
 - collaborative self-replicators; organism networks; self-replicating neural cellular automata;
 - weight-space programming; direct weight editing; model editing;
 - model merging backdoor; backdoor inheritance; model supply-chain security;
+- donor-guided parameter editing; conditional behavior transfer; task-conditioned backdoors; answer-side backdoors; positional triggers;
+- parameter-based knowledge editing; collateral capability regression; model-layer versus harness-layer backdoors;
 - parameter-space transfer; behavioral inheritance; AI self-replication; weight-based replicator;
 - federated learning backdoor transfer; model lineage; neural trojan persistence.
 
