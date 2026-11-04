@@ -4,55 +4,99 @@
 **Status:** Preliminary, web-based, non-systematic review  
 **Purpose:** Identify adjacent work, prevent novelty overclaims, and define the next systematic search.
 
-## 1. Neural-network self-replication in artificial-life settings
+This review was expanded during a repository revision. It is still not systematic: no database-by-database screening, complete forward/backward citation review, or exhaustive full-text comparison has been completed. In particular, the full text of Randazzo et al. (2021) was not available in the sources inspected and remains an explicit review gap.
+
+## 1. Neural Network Quine
+
+**Chang, Oscar; Lipson, Hod (2018). “Neural Network Quine.”** In *Proceedings of the 2018 Conference on Artificial Life (ALIFE 2018)*, 234–241. [DOI: 10.1162/isal_a_00049](https://doi.org/10.1162/isal_a_00049) · [arXiv:1803.05859](https://arxiv.org/abs/1803.05859).
+
+Chang and Lipson describe a neural network that learns to output its own weights when queried with a coordinate identifying a parameter. They also demonstrate a network that combines the self-replication task with MNIST classification, and report a trade-off between classification and self-replication performance.
+
+**Relevance:** This is a foundational, direct demonstration of neural-network self-reproduction through parameter output. It prevents any claim that a network encoding or reproducing its own weights is a new idea. The paper does not, on its own, demonstrate a contemporary pretrained model transmitting a behavioral marker into an independently developed model or a lineage across distinct foundation models.
+
+## 2. Gabor et al. (2019): Self-Replication in Neural Networks
+
+**Gabor, Thomas; Illium, Steffen; Mattausch, Andy; Belzner, Lenz; Linnhoff-Popien, Claudia (2019). “Self-Replication in Neural Networks.”** In *Proceedings of the 2019 Conference on Artificial Life (ALIFE 2019)*, 424–431. [DOI: 10.1162/isal_a_00197](https://doi.org/10.1162/isal_a_00197).
+
+The authors study neural-network self-replication using weight-space dynamics and artificial-chemistry settings containing multiple neural networks.
+
+**Relevance:** This is an earlier conference version of the line of work expanded in the 2022 *Artificial Life* article. It is part of the core prior-art trail and should be read alongside both the 2018 Neural Network Quine and the 2022 expanded article.
+
+## 3. Gabor et al. (2021): Goals for Self-Replicating Neural Networks
+
+**Gabor, Thomas; Illium, Steffen; Zorn, Maximilian; Linnhoff-Popien, Claudia (2021). “Goals for Self-Replicating Neural Networks.”** In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 101–110. [DOI: 10.1162/isal_a_00439](https://doi.org/10.1162/isal_a_00439).
+
+This work addresses additional goals in the self-replicating neural-network setting. The 2022 Gabor et al. article explicitly points to this 2021 work for a “train on other” operator and for auxiliary fitness functions in a neural-network soup context.
+
+**Relevance:** This is directly adjacent to inter-network learning and the use of networks in populations. Its exact operator and experimental scope should be compared in detail before the project claims a new form of network-to-network parameter modification.
+
+## 4. Randazzo et al. (2021): Recursively Fertile Self-replicating Neural Agents
+
+**Randazzo, Ettore; Versari, Luca; Mordvintsev, Alexander (2021). “Recursively Fertile Self-replicating Neural Agents.”** In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 58. [DOI: 10.1162/isal_a_00367](https://doi.org/10.1162/isal_a_00367).
+
+The title makes this a particularly important lead for claims about recursive or generational neural self-replication. The author's project index describes the project as creating a genealogy of neural networks encoding flowers.
+
+**Review limitation:** The full paper text was not available in the sources inspected for this revision. This summary is deliberately limited to bibliographic information and the author's short project description. Its mechanism, definition of recursive fertility, and overlap with the proposed A→B→C lineage criterion remain unresolved. It must be examined before making any priority or novelty claim.
+
+## 5. Gabor et al. (2022): Self-Replication in Neural Networks
 
 **Gabor, Thomas; Illium, Steffen; Zorn, Maximilian; Lenta, Cristian; Mattausch, Andy; Belzner, Lenz; Linnhoff-Popien, Claudia (2022). “Self-Replication in Neural Networks.”** *Artificial Life* 28(2), 205–223. [DOI: 10.1162/artl_a_00359](https://doi.org/10.1162/artl_a_00359).
 
-Gabor et al. analyse how different network types lend themselves to self-replication. Their abstract describes backpropagation as a natural way to navigate weight space in which non-trivial self-replicators can arise, and reports analyses of robustness to noise, artificial-chemistry interactions, fixed-point weight configurations, and attractor basins.
+This expanded journal paper formalizes **self-application**: a network is applied to another network to produce a network. It studies self-application and self-training, non-trivial fixed points in weight space, robustness to noise, and artificial-chemistry environments in which multiple neural networks interact as individuals.
 
-**Relevance:** This is a direct prior use of the concept of self-replication in neural networks and must be treated as foundational adjacent work. The present project is narrower and asks about source-to-recipient parameter transfer, independent inheritance, and second-generation reproduction. A full-text comparison is required before any priority claim.
+The article also states that its experiments do not track genealogical relationships between particles. It identifies genealogical tracking as future work that could distinguish horizontal from vertical inheritance of information. It also notes that the scope of the article trains networks only with (a reduction of) themselves as input and refers to Gabor et al. (2021) for a “train on other” operator.
 
-## 2. Agent-level AI self-replication
+**Relevance:** This is among the closest prior works. It already covers network-to-network application, interacting populations, self-replicating structures, and the weight-space perspective. The absence of lineage tracking in this particular article is a potential motivation for further research, not proof that no other paper has studied lineage; Randazzo et al. (2021) is a prominent unresolved predecessor.
+
+## 6. Illium et al. (2022): Constructing Organism Networks from Collaborative Self-Replicators
+
+**Illium, Steffen; Zorn, Maximilian; Lenta, Cristian; Kölle, Michael; Linnhoff-Popien, Claudia; Gabor, Thomas (2022). “Constructing Organism Networks from Collaborative Self-Replicators.”** In *Proceedings of the 2022 IEEE Symposium Series on Computational Intelligence (SSCI 2022)*, 1268–1275. [DOI: 10.1109/SSCI51031.2022.10022216](https://doi.org/10.1109/SSCI51031.2022.10022216) · [arXiv:2212.10078](https://arxiv.org/abs/2212.10078).
+
+The authors introduce organism networks composed of several neural particle networks. Each particle performs a weight-application role while also being trained to self-replicate its own weights. The work studies collective arithmetic and simplified MNIST tasks, and reports task specialization among particles.
+
+**Relevance:** This is another direct precedent for collaborative neural structures built from self-replicating parameter-level components. It makes broad claims about the first network population to self-replicate or about neural components propagating through a network population untenable.
+
+## 7. Agent-level AI self-replication
 
 **Pan, Xudong; Dai, Jiarun; Fan, Yihe; Luo, Minyuan; Li, Changyi; Yang, Min (2025). “Large Language Model-Powered AI Systems Achieve Self-Replication with No Human Intervention.”** arXiv:2503.17378, v2 dated 2025-03-25. [arXiv](https://arxiv.org/abs/2503.17378) · [DOI](https://doi.org/10.48550/arXiv.2503.17378).
 
-The authors report self-replication capability-elicitation experiments across AI systems. The arXiv record describes the work as “work in progress”; claims should be attributed to the authors and not presented as settled consensus.
+The authors report capability-elicitation experiments in which AI systems attempt agent-level self-replication. The arXiv record identifies the work as work in progress; attribute the results to the authors and do not present them as settled consensus.
 
-**Relevance:** Establishes that AI-agent self-replication predates current 2026 work. It principally concerns agent/system-level replication, not necessarily infection of a distinct recipient model's own learned parameters.
+**Relevance:** Establishes an agentic self-replication research line. It is distinct from the artificial-life self-application literature and from the proposed criterion for parameter-space inheritance in a distinct recipient.
 
-## 3. Agentic replication across vulnerable hosts
+## 8. Agentic replication across vulnerable hosts
 
 **Air, Alena; Reworr; Kotov, Nikolaj; Volkov, Dmitrii; Steidley, John; Ladish, Jeffrey (2026). “Language Models Can Autonomously Hack and Self-Replicate.”** [Palisade Research](https://palisaderesearch.org/research/self-replication) · [arXiv:2605.06760](https://arxiv.org/abs/2605.06760) · [Code](https://github.com/palisaderesearch/AI-self-replication).
 
-Published May 7, 2026. The authors report agents exploiting vulnerable hosts, copying model weights and harness, establishing inference on target hosts, and chaining replication.
+Published May 7, 2026. The authors report agents exploiting vulnerable hosts, copying model weights and an execution harness, establishing inference on target hosts, and chaining replication.
 
-**Relevance:** Model-file and agent-harness replication across hosts is already an empirical research area. That is not the core claim of this project.
+**Relevance:** Host-level model-file and agent-harness replication is already an empirical research area. Copying or redeploying a model is not equivalent to modifying a distinct recipient's own parameters so it inherits a behavior.
 
-## 4. Weight-based replicators
+## 9. Weight-based AI replicators
 
 **Zhou, William; Freeman, Daniel; Anthropic Frontier Red Team (2026-10-12). “AI Models May Be Capable of Self-Replicating Without Access to a Datacenter.”** [Anthropic Research](https://www.anthropic.com/research/self-replicating-ai).
 
-The report describes “weight-based replicators” as models propagating through host compromise and using model weights as part of the malware payload, followed by inference setup and continued propagation.
+The report describes weight-based AI replicators that propagate through host compromise, carrying or retrieving model weights and establishing inference on compromised hardware. It also uses an epidemiological reproduction-number analogy for the number of infected devices.
 
-**Relevance:** This is a close conceptual neighbour and makes it necessary to distinguish carrying model weights between hosts from modifying a distinct recipient model's own parameter state. This project does not claim novelty for weight-based AI worms.
+**Relevance:** This is a close contemporary threat model. This project does not claim novelty for AI worms carrying model weights between hosts. The proposed distinction is parameter-space transfer into a distinct recipient model, not the transport of the source model to a new machine.
 
-## 5. Backdoor inheritance through model merging
+## 10. Backdoor inheritance through model merging
 
-**Yuan, Zenghui; Xu, Yangming; Shi, Jiawen; Zhou, Pan; Sun, Lichao (2025). “Merge Hijacking: Backdoor Attacks to Model Merging of Large Language Models.”** *Proceedings of ACL 2025*, 32688–32703. [ACL Anthology](https://aclanthology.org/2025.acl-long.1571/) · [DOI: 10.18653/v1/2025.acl-long.1571](https://doi.org/10.18653/v1/2025.acl-long.1571).
+**Yuan, Zenghui; Xu, Yangming; Shi, Jiawen; Zhou, Pan; Sun, Lichao (2025). “Merge Hijacking: Backdoor Attacks to Model Merging of Large Language Models.”** *Proceedings of ACL 2025*, 32688–32703. [ACL Anthology](https://aclanthology.org/2025.acl-long.1571/) · [DOI](https://doi.org/10.18653/v1/2025.acl-long.1571).
 
-The paper demonstrates that a recipient produced by model merging can inherit a backdoor from a maliciously prepared uploaded model while retaining utility across tasks.
+The paper demonstrates that a model produced by merging can inherit a backdoor from a maliciously prepared uploaded model while retaining utility across tasks.
 
-**Relevance:** This already demonstrates a form of parameter-space behavior transfer and therefore covers a central part of the proposed P2 level. A single merge is not evidence of a generational process. The project must compare its definitions and controls carefully against this work.
+**Relevance:** This is direct evidence for one-generation parameter-space behavior transfer and overlaps with the P2 claim level. It does not, on its own, establish a recipient-sourced second generation.
 
-## 6. Backdoor persistence under continual fine-tuning
+## 11. Backdoor persistence under continual fine-tuning
 
-**Cui, Jing; Han, Yufei; Jiao, Jianbin; Zhang, Junge (2026). “Persistent Backdoor Attacks under Continual Fine-Tuning of LLMs.”** *Proceedings of AAAI 2026* 40(36), 30422–30430. [DOI: 10.1609/aaai.v40i36.40295](https://doi.org/10.1609/aaai.v40i36.40295).
+**Cui, Jing; Han, Yufei; Jiao, Jianbin; Zhang, Junge (2026). “Persistent Backdoor Attacks under Continual Fine-Tuning of LLMs.”** *Proceedings of AAAI 2026* 40(36), 30422–30430. [DOI](https://doi.org/10.1609/aaai.v40i36.40295).
 
-The authors propose P-Trojan and report persistence across their tested multi-stage fine-tuning settings.
+The authors propose P-Trojan and report persistence through their tested multi-stage continual fine-tuning settings.
 
-**Relevance:** Persistence is an important property to measure, but does not itself establish transmission or reproduction.
+**Relevance:** Persistence is an important property to measure, but it is not the same as transfer to a distinct recipient or multi-generation reproduction.
 
-## 7. Parameter alignment and model merging
+## 12. Parameter alignment and model merging
 
 **Ainsworth, Samuel K.; Hayase, Jonathan; Srinivasa, Siddhartha (2023). “Git Re-Basin: Merging Models modulo Permutation Symmetries.”** ICLR 2023. [arXiv:2209.04836](https://arxiv.org/abs/2209.04836).
 
@@ -60,29 +104,36 @@ The work studies hidden-unit permutation symmetries and alignment for merging in
 
 **Relevance:** Raw parameter coordinates are not universally comparable. Cross-model transfer claims require functional evaluation and explicit alignment assumptions.
 
-## 8. Direct weight interpretation and editing
+## 13. Direct weight interpretation and editing
 
 **Takehi, Rikiya; Teoh, Jayden; Zhang, Alex; Khattab, Omar (2026). “Sparks of Weight-Space Programming: LLMs Can Natively Read & Write Neural Network Weights.”** Authors' research article, November 2, 2026. [Article](https://rikiyat.github.io/blog/weight-space-programming/) · [Experiment logs](https://github.com/RikiyaT/lm_understand-logs).
 
-The authors report experiments in which a general-purpose LLM inspects neural-network parameters, infers behavior, writes small policies, and directly edits a language-model checkpoint. The article is treated as an authors' research publication, not as a peer-reviewed conference paper.
+The authors report experiments in which a general-purpose LLM inspects neural-network parameters, infers behavior, writes small policies, and directly edits a language-model checkpoint. The article is treated as an authors' research article, not as a peer-reviewed conference paper.
 
-**Relevance:** Motivates the possibility of an external editor interpreting and changing weights. It does not establish parameter-space contagion or autonomous generational transfer.
+**Relevance:** Motivates the possibility that a general-purpose model can serve as an external editor of neural parameters. It does not itself establish the multi-generation lineage defined here.
 
-## 9. Preliminary novelty statement
+## 14. Preliminary novelty assessment
 
-Prior work already covers neural-network self-replication, agent-level replication, weight-based AI worms, one-generation backdoor transfer through model merging, persistence under fine-tuning, parameter alignment, and LLM-assisted weight editing.
+Prior work already covers neural networks outputting their own weights, formal self-application, artificial-chemistry populations of interacting networks, auxiliary goals and train-on-other operations, recursively fertile self-replicating neural agents, collaborative organism networks, agent-level replication, weight-based AI worms, one-generation backdoor inheritance through model merging, persistence under fine-tuning, parameter alignment, and LLM-assisted weight editing.
 
-The proposed conjunction is narrower: **a source model's parameter-carried benign behavioral structure is transferred into a distinct recipient's own parameters; the recipient independently retains it; and the recipient then supplies causally necessary source information for a further transfer without operator-supplied marker content.** The present review has not established whether this conjunction is novel. No priority claim is made.
+The remaining proposed research direction is not “a neural network can replicate itself” or “one network can modify another.” Those topics have substantial prior art. A potentially useful next study would investigate **lineage-resolved and causally validated transfer of a benign behavior across distinct models in modern model families**, asking whether the recipient's own parameter-carried information supports a subsequent transfer and separating that information from the editor's knowledge or a fixed external replicator.
 
-## 10. Review limitations and next search
+Gabor et al. explicitly identify genealogical tracking as an open direction in their 2022 article. However, Randazzo et al.'s *Recursively Fertile Self-replicating Neural Agents* (2021) is a particularly important nearby work whose full-text overlap remains unresolved. The project must not claim a novel lineage gap until that work and the other cited artificial-life papers have been compared in full.
 
-This review is not systematic. It does not exhaustively query arXiv, IEEE Xplore, ACM Digital Library, Scopus, Web of Science, or all artificial-life and security venues. The next review should use a documented search protocol and forward/backward citation tracing. Search terms should combine:
+The contribution may ultimately be a new benchmark, a modern empirical extension or replication of earlier artificial-life results, a negative result about generalization to current model families, or no novel contribution. This preliminary review does not establish priority.
 
-- self-replication in neural networks, artificial chemistry neural networks, neural network self-replicator;
-- weight-space programming, direct weight editing, model editing;
-- model merging backdoor, backdoor inheritance, model supply-chain security;
-- parameter-space transfer, parameter-space propagation, behavioral inheritance;
-- AI self-replication, autonomous replication and adaptation, weight-based replicator;
-- federated learning backdoor transfer, model lineage, and neural trojan persistence.
+## 15. Review limitations and next search
 
-Record databases, exact queries, search date, result counts, inclusion/exclusion rules, and screening outcomes before making stronger novelty statements.
+This review is not systematic. It does not exhaustively query arXiv, IEEE Xplore, ACM Digital Library, Scopus, Web of Science, OpenReview, ACL Anthology, or all artificial-life and security venues. It also does not include a full-text comparison of Randazzo et al. (2021). The next review should document database-by-database queries and forward/backward citation tracing.
+
+Search terms should include:
+
+- neural network quine; self-replication in neural networks; self-application; train-on-other; artificial chemistry neural networks;
+- recursively fertile self-replicating neural agents; genealogy of neural networks; horizontal and vertical inheritance in artificial life;
+- collaborative self-replicators; organism networks; self-replicating neural cellular automata;
+- weight-space programming; direct weight editing; model editing;
+- model merging backdoor; backdoor inheritance; model supply-chain security;
+- parameter-space transfer; behavioral inheritance; AI self-replication; weight-based replicator;
+- federated learning backdoor transfer; model lineage; neural trojan persistence.
+
+Record databases, exact queries, search date, result counts, inclusion/exclusion rules, full-text availability, and screening outcomes before making stronger novelty statements.
