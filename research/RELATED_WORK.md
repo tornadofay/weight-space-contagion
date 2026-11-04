@@ -34,9 +34,9 @@ This work addresses additional goals in the self-replicating neural-network sett
 
 **Randazzo, Ettore; Versari, Luca; Mordvintsev, Alexander (2021). “Recursively Fertile Self-replicating Neural Agents.”** In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 58. [DOI: 10.1162/isal_a_00367](https://doi.org/10.1162/isal_a_00367).
 
-The title makes this a particularly important lead for claims about recursive or generational neural self-replication. The author's project index describes the project as creating a genealogy of neural networks encoding flowers.
+This is a particularly close predecessor for claims about recursive or generational neural self-replication. In the lead author's public project note, Randazzo describes feedforward neural networks that encode a target image and self-replicate with and without variation. The note describes the project as creating a genealogy of neural networks encoding flowers ([author's project note, 21 July 2021](https://oteret.github.io/posts/self-repl-nn/)).
 
-**Review limitation:** The full paper text was not available in the sources inspected for this revision. This summary is deliberately limited to bibliographic information and the author's short project description. Its mechanism, definition of recursive fertility, and overlap with the proposed A→B→C lineage criterion remain unresolved. It must be examined before making any priority or novelty claim.
+**Review limitation:** The full proceedings paper was not available in the sources inspected for this revision. The summary above is based on the bibliographic record and the author's project note, not a full reading of the paper. Its exact replication unit, transfer mechanism, lineage definition, and relationship to the proposed A→B→C criterion remain unresolved. This is a close prior-art blocker: P3 cannot be presented as a novel concept or a newly identified gap until the full paper has been examined.
 
 ## 5. Gabor et al. (2022): Self-Replication in Neural Networks
 
@@ -120,7 +120,7 @@ The remaining proposed research direction is not “a neural network can replica
 
 Gabor et al. explicitly identify genealogical tracking as an open direction in their 2022 article. However, Randazzo et al.'s *Recursively Fertile Self-replicating Neural Agents* (2021) is a particularly important nearby work whose full-text overlap remains unresolved. The project must not claim a novel lineage gap until that work and the other cited artificial-life papers have been compared in full.
 
-The contribution may ultimately be a new benchmark, a modern empirical extension or replication of earlier artificial-life results, a negative result about generalization to current model families, or no novel contribution. This preliminary review does not establish priority.
+The contribution may ultimately be a new benchmark, a modern empirical extension or replication of earlier artificial-life results, a negative result about generalization to current model families, or no novel contribution. This preliminary review does not establish priority. In particular, the full-text overlap of Randazzo et al. (2021) remains an explicit unresolved issue.
 
 ## 15. Review limitations and next search
 
