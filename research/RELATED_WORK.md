@@ -166,7 +166,7 @@ Gabor et al. explicitly identify genealogical tracking as an open direction in t
 
 The contribution may ultimately be a new benchmark, a modern empirical extension or replication of earlier artificial-life results, a negative result about generalization to current model families, or no novel contribution. This preliminary review does not establish priority. In particular, the full-text overlap of Randazzo et al. (2021) remains an explicit unresolved issue.
 
-## 16. Review limitations and next search
+## 20. Review limitations and next search
 
 This review is not systematic. It does not exhaustively query arXiv, IEEE Xplore, ACM Digital Library, Scopus, Web of Science, OpenReview, ACL Anthology, or all artificial-life and security venues. It also does not include a full-text comparison of Randazzo et al. (2021). The next review should document database-by-database queries and forward/backward citation tracing.
 
