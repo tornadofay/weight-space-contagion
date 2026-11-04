@@ -1,23 +1,24 @@
 # Weight-Space Contagion
 
-**A research project on parameter-space transmission, inheritance, and possible generational reproduction of learned behaviors.**
+**A conceptual problem statement on donor-guided conditional-behavior implantation and the separate possibility of generational parameter-space transmission.**
 
-> Can a neural network carry a functional behavioral structure in its parameters, transfer it into a distinct recipient model's parameters, and leave that recipient able to serve as the source of a subsequent transfer?
+> Can a donor model's condition-dependent behavior be encoded into a distinct recipient's own parameters, and what would have to be true for that recipient to become the source of a further transfer?
 
-The project investigates this as an **unproven research hypothesis**. It distinguishes parameter-space transmission into another model from an AI agent copying its model files, weights, runtime, or harness to another machine.
+The scenario is hypothetical. The project distinguishes a one-generation behavior implant from generational contagion, and parameter-space changes from model-file copying, prompts, adapters, external memory, or harness modifications.
 
 ## Current publication
 
-**[Weight-Space Contagion: A Research Agenda for Parameter-Space Transmission, Inheritance, and Reproduction of Learned Behaviors](manuscript/WEIGHT_SPACE_CONTAGION_POSITION_PAPER.md)**
+**[Weight-Space Contagion: A Problem Statement and Threat Model for Conditional Behavior Transfer and Generational Reproduction](manuscript/WEIGHT_SPACE_CONTAGION_POSITION_PAPER.md)**
 
-<sub>Conceptual position paper · Version 0.1.0 · 4 November 2026 · Not peer reviewed · No empirical results claimed</sub>
+<sub>Conceptual position paper · Version 0.2.0 · 4 November 2026 · Not peer reviewed · No empirical results claimed</sub>
 
-The paper defines distinct evidence levels for host-level replication, behavioral persistence, parameter-space transmission, generational reproduction, and autonomy. It reviews adjacent work and proposes a staged research programme restricted to offline, owner-controlled synthetic models and harmless behavioral markers.
+The paper describes a hypothetical donor → editor → recipient scenario, distinguishes conditional behavior implantation from generational reproduction, reviews prior work, and identifies questions for independent research teams. It is a problem formulation, not an experimental proposal by the repository author.
 
 ## Research status
 
-- **Stage:** public conceptual paper and preliminary literature review.
-- **Empirical results:** none.
+- **Stage:** public conceptual problem statement and preliminary literature synthesis.
+- **Empirical results:** none; no experiments or tests have been conducted by this project.
+- **Author's experimental scope:** the repository author is not undertaking or committing to experiments and does not claim suitable infrastructure or a research team.
 - **Parameter-space transmission demonstrated by this project:** no.
 - **Generational reproduction demonstrated by this project:** no.
 - **Autonomy claim:** none.
@@ -39,7 +40,7 @@ Several adjacent research areas already cover important pieces of this problem:
 6. Backdoor persistence through continual fine-tuning ([Cui et al., AAAI 2026](https://doi.org/10.1609/aaai.v40i36.40295)).
 7. Direct interpretation and editing of model weights ([Takehi et al., 2026](https://rikiyat.github.io/blog/weight-space-programming/)).
 
-The proposed question is the intersection of these areas: whether source-carried information can move into a distinct recipient's own parameters, be inherited independently, and then support a second transfer. The project does not claim that this complete mechanism is novel; that must be established through systematic review.
+The donor-guided scenario intersects established work on model-merging backdoors, conditional activation, and direct parameter editing. The open question is narrower than the general idea of transferring a backdoor: whether a weight-space editor can use a donor as the source of a condition-dependent behavior and encode it in a distinct recipient's parameters, independently of prompts, adapters, external memory, or the harness. A second-generation transfer is a separate and stronger question. No novelty or priority claim is made.
 
 ## Core definitions
 
@@ -54,17 +55,16 @@ See [research/DEFINITIONS.md](research/DEFINITIONS.md) and the position paper fo
 
 ## Research questions
 
-- Can a benign marker be associated with a model's parameter state?
-- Can it be transferred into a distinct recipient's own parameters without source-checkpoint copying?
-- Does the recipient retain it independently?
-- Can the recipient support a second transfer without operator-supplied marker contents?
-- Is the source-carried parameter information causally necessary, or is the external editor doing the work?
-- What limits transfer across architecture, parameter alignment, and benign model transformations?
-- Can defensive tools detect, trace, and remove the marker?
+- Can a donor's condition-dependent behavior be transferred into a distinct recipient's parameters, rather than supplied through a prompt, adapter, memory store, or harness?
+- Is the result a new capability, a policy/refusal change, or a task-routing change?
+- Does the recipient retain the behavior independently after transfer-time components are removed?
+- How do architecture, parameter alignment, and collateral effects constrain direct weight-space editing?
+- Can a recipient serve as the source for a further transfer, with its own parameter-carried information causally necessary?
+- What defensive methods can detect, trace, contain, or remove such changes?
 
 ## Safety boundary
 
-Initial research is limited to offline, owner-controlled, synthetic models and harmless behavioral markers. The project will not develop or publish a deployable worm, exploit chain, unauthorized access tooling, credential theft, stealth, persistence, evasion, external scanning, or uncontrolled propagation. Publication prioritizes definitions, benign evaluation, causal controls, provenance, and defense. See [SECURITY.md](SECURITY.md) and [AGENTS.md](AGENTS.md).
+This repository is a conceptual problem statement. It does not provide an implementation, test suite, experiment, or operational procedure. Any future empirical work by an independent team should use offline, owner-controlled models and harmless behavioral markers. The project will not develop or publish a deployable worm, exploit chain, unauthorized access tooling, credential theft, stealth, persistence, evasion, external scanning, or uncontrolled propagation. See [SECURITY.md](SECURITY.md) and [AGENTS.md](AGENTS.md).
 
 ## Repository map
 
