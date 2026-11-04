@@ -25,9 +25,11 @@ The contribution of this repository is a problem formulation, threat-model disti
 
 A neural network's behavior is determined in part by its architecture, parameters, and inference environment. Model-security research has shown that behavior can be deliberately embedded in or associated with learned systems. Separately, model-merging research has shown that a model can inherit behavior from another model through operations over their parameters. Recent work on weight-space programming adds a further capability question: can a general-purpose language model inspect and directly edit neural-network weights in a way that changes or reconstructs model behavior?
 
-These developments motivate a question that is easy to describe informally but difficult to state precisely:
+These developments motivate two related but distinct questions. First, can a donor model's condition-dependent behavior be transferred into a distinct recipient's own parameters, where it remains after transfer-time components are removed? Second, can that recipient later serve as the source of a further transfer, with its own parameter-carried information causally necessary?
 
-> Can a neural network carry a functional behavioral structure in its parameters, transfer that structure into a different neural network's parameters, and leave the recipient able to serve as the source of a subsequent transfer?
+The first is a one-generation P2 question. The second is the stronger P3 question:
+
+> Can a model carry a functional behavioral structure in its parameters, transfer it into a distinct recipient's parameters, and leave that recipient able to serve as the source of a subsequent transfer?
 
 The phrase **AI virus** is an intuitive metaphor for this possibility. It is not used here as a claim that a neural network is a biological organism or that a working digital virus has been discovered. The formal term used in this paper is **weight-space contagion**, meaning a hypothesized process of parameter-space transmission, independent inheritance, and potentially generational reproduction of a learned behavior.
 
@@ -40,7 +42,7 @@ The distinction matters because several neighboring capabilities are often confl
 
 The first is model or agent replication across hosts. The second is behavioral embedding. The third is one-generation parameter-space transfer. Only the fourth begins to address the generational question proposed here. Even then, it does not automatically establish autonomy: an external editor or operator may be doing all the work.
 
-This paper therefore makes a deliberately limited contribution. It defines the target phenomenon, locates it among existing research, identifies the principal alternative explanations, and sets evidence requirements for a controlled research programme. The paper contains no experimental demonstration.
+This paper therefore makes a deliberately limited contribution. It defines the problem scenario, locates it among existing research, identifies principal alternative explanations, and states questions and evidence distinctions that independent research teams may assess. The author is not proposing to conduct the studies described later in this paper. No experimental demonstration is reported.
 
 ## 2. Scope and terminology
 
@@ -48,7 +50,7 @@ This paper therefore makes a deliberately limited contribution. It defines the t
 
 Let a model be represented abstractly by its architecture and parameter state, with its behavior evaluated under a declared inference configuration. The paper uses the term **parameter state** for the learned numerical tensors that define the model. It does not assume that raw parameter coordinates have a universally comparable meaning across architectures or independently trained models.
 
-A **behavioral marker** is a harmless, precisely specified behavior that can be measured on an independent test set. In initial experiments, markers should be synthetic and benign—for example, a small deterministic mapping over a toy input domain. Markers are research instruments, not harmful triggers or operational payloads.
+A **behavioral marker** is a harmless, precisely specified behavior that could be measured independently in a controlled evaluation. Any such evaluation should use synthetic and benign markers—for example, a small deterministic mapping over a toy input domain. Markers are research instruments, not harmful triggers or operational payloads.
 
 ### 2.2 Core terms
 
