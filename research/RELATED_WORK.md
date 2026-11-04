@@ -56,6 +56,14 @@ The authors introduce organism networks composed of several neural particle netw
 
 **Relevance:** This is another direct precedent for collaborative neural structures built from self-replicating parameter-level components. It makes broad claims about the first network population to self-replicate or about neural components propagating through a network population untenable.
 
+## 7. Neural cellular automata: pattern replication and inheritable mutation
+
+**Sinapayen, Lana (2023). “Self-Replication, Spontaneous Mutations, and Exponential Genetic Drift in Neural Cellular Automata.”** *Qeios*, Research Article (Preprint), 23 May 2023. [DOI: 10.32388/JPUWVB](https://doi.org/10.32388/JPUWVB) · [arXiv:2305.13043](https://arxiv.org/abs/2305.13043) · [Code](https://github.com/LanaSina/NCA_self_replication).
+
+The paper reports neural-cellular-automata patterns that self-replicate and exhibit spontaneous inheritable mutations and genetic drift across generations. Each cell has a state updated by a fixed rule; the update rule is encoded by a neural network. The paper states that the rule-network weights are updated through gradient descent during training and do not change after training. The hereditary information called the organism's “DNA” is defined from cell-state values in an egg/pattern and is passed through the pattern's replication lineage.
+
+**Relevance and distinction:** This is important adjacent work on neural systems, self-replicating patterns, inheritance, and mutation. It does not demonstrate the NCA rule network's learned parameter vector being copied or transferred into a distinct recipient model's parameter state. The replicated units are patterns/cell states operating under fixed learned NCA rules. It should be included in the broader artificial-life background without conflating pattern/state inheritance with model-parameter transmission.
+
 ## 7. Agent-level AI self-replication
 
 **Pan, Xudong; Dai, Jiarun; Fan, Yihe; Luo, Minyuan; Li, Changyi; Yang, Min (2025). “Large Language Model-Powered AI Systems Achieve Self-Replication with No Human Intervention.”** arXiv:2503.17378, v2 dated 2025-03-25. [arXiv](https://arxiv.org/abs/2503.17378) · [DOI](https://doi.org/10.48550/arXiv.2503.17378).
@@ -130,6 +138,7 @@ Search terms should include:
 
 - neural network quine; self-replication in neural networks; self-application; train-on-other; artificial chemistry neural networks;
 - recursively fertile self-replicating neural agents; genealogy of neural networks; horizontal and vertical inheritance in artificial life;
+- neural cellular automata; inheritable mutations and genetic drift in NCA; pattern-state inheritance versus update-rule parameter transfer;
 - collaborative self-replicators; organism networks; self-replicating neural cellular automata;
 - weight-space programming; direct weight editing; model editing;
 - model merging backdoor; backdoor inheritance; model supply-chain security;
