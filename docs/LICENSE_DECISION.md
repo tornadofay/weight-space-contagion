@@ -2,7 +2,7 @@
 
 **Status:** Undecided as of 2026-11-04.
 
-The repository is publicly readable, but it has no project license. Public visibility does not grant a general open-source license to use, modify, and redistribute the material outside the permissions provided by the hosting platform.
+The repository is publicly readable, but it has no project license. Public visibility does not grant a general open-source license to use, modify, and redistribute the material outside the permissions provided by the hosting platform. This note was checked on 2026-11-04 against GitHub's Terms of Service effective 2026-04-27.
 
 GitHub's Terms of Service state that publicly posted content may be viewed and forked by others. By making a repository public, the owner grants other GitHub users a nonexclusive, worldwide license to use, display, perform, and reproduce the content **through GitHub's functionality**, including forking. A separate project license grants additional rights under its own terms. See [GitHub Terms of Service, section 5](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#5-license-grant-to-other-users).
 
