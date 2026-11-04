@@ -56,67 +56,81 @@ A **behavioral marker** is a harmless, precisely specified behavior that can be 
 - **Editor:** any model, program, person, or tool that analyses or changes parameters. The editor is not automatically the carrier.
 - **Transmission:** a declared parameter-changing operation results in the recipient expressing the marker, without copying the source checkpoint into the recipient.
 - **Inheritance:** the recipient continues to express the marker when evaluated independently, after the source model and source-side state are removed.
-- **Generational reproduction:** an inherited recipient serves as the source of a further validated parameter-space transfer.
-- **Autonomy:** reproduction occurs without the operator or external editor supplying the marker's semantic contents or a fixed replication recipe that fully explains the result. Autonomy is a stronger claim than generational reproduction.
+- **Multi-generation transmission:** a validated transfer lineage proceeds through at least two distinct source-to-recipient transitions, such as A→B→C, with B serving as the source of information for the second transition.
+- **Autonomous carrier-mediated reproduction:** the carrier itself initiates and directs the relevant reproduction process; an external tool may execute bounded low-level operations, but the carrier's own information and decision process—not operator/editor-supplied marker content or a fixed external replication recipe—must explain the reproduction.
 - **Lineage:** the directed graph of source-to-recipient transfers, with immutable checkpoint identifiers and recorded evidence for each edge.
 
-A dormant backdoor is not, by itself, a reproducing system. A model that is copied to another host is not, by that fact alone, an instance of parameter-space contagion. A model that inherits a behavior once through merging demonstrates transfer, not generational reproduction.
+A dormant backdoor is not, by itself, a reproducing system. A model that is copied to another host is not, by that fact alone, an instance of parameter-space transmission. A model that inherits a behavior once through merging demonstrates one-generation transfer, not multi-generation transmission. Multi-generation transmission does not, by itself, demonstrate autonomy.
 
 ### 2.3 A hierarchy of claims
 
-The following levels help prevent overstatement:
+The following levels help prevent stronger claims from being inferred from weaker observations:
 
 | Level | Claim | Minimum evidence |
 |---|---|---|
-| P0 | Checkpoint or agent replication | A model or its files/harness are copied to another host |
+| P0 | Host-level model or agent replication | A model, checkpoint, runtime, or harness is copied or redeployed on another host |
 | P1 | Behavioral embedding or persistence | A model expresses a marker after a defined intervention or transformation |
-| P2 | Parameter-space transmission | A distinct recipient acquires the marker through parameter change without source-checkpoint copying |
-| P3 | Generational reproduction | A recipient independently becomes the source of a second validated parameter-space transfer |
-| P4 | Autonomous generational reproduction | The carrier's own parameter-encoded information is causally necessary, and operator/editor-supplied content or fixed logic does not explain the transfer |
+| P2 | One-generation parameter-space transmission | A distinct recipient acquires the marker through a parameter-changing operation without source-checkpoint substitution |
+| P3 | Multi-generation parameter-space transmission | A validated A→B→C lineage exists; A and A-side state are absent in the second transition, and B's carrier state supplies the relevant source information for C |
+| P4 | Autonomous carrier-mediated reproduction | P3 plus evidence that the carrier itself initiates and directs reproduction, rather than an operator/editor or fixed external replicator supplying the substantive information and decisions |
 
-P0 through P4 are not a single maturity scale for all AI systems. They are a claim taxonomy for this research question. Each level requires its own controls.
+P0 through P4 are not a general maturity scale for AI systems. They are claim levels for this research question. P3 may be editor-mediated; it must not be called autonomous unless the additional P4 evidence is established. Earlier work in artificial life already studies neural self-application, populations of interacting networks, and self-replicating neural structures. The proposed levels are therefore an evaluation taxonomy, not a claim that such lower-level mechanisms are new.
 
 ## 3. Related work
 
-### 3.1 Self-replication in neural networks
+### 3.1 Neural Network Quine and early parameter self-reproduction
 
-Gabor et al. studied self-replication in neural networks in an artificial-chemistry setting. Their 2022 *Artificial Life* paper analyses how network types lend themselves to self-replication, reports that backpropagation can naturally navigate weight space toward non-trivial self-replicators, and examines robustness to noise and attractor basins around fixed-point weight configurations [1]. This is a direct and important precedent for the phrase *self-replication in neural networks*.
+Chang and Lipson's *Neural Network Quine* (2018) is a foundational antecedent. The authors construct a network that learns to output its own weights when queried with a coordinate identifying a parameter. They also demonstrate a version that performs MNIST classification while carrying out the weight-output task, with a reported trade-off between classification performance and self-replication [1]. This is not merely a biological metaphor: it is an explicit neural-network self-reproduction mechanism.
 
-The present proposal asks a different question. It is not primarily about whether a neural network can represent or produce a copy of itself within an artificial chemistry. It asks whether a behavior carried by one model's parameters can be transferred into a distinct recipient model's parameter state, inherited independently, and then transferred onward. The distinction must be tested rather than assumed; Gabor et al.'s work makes a literature review of neural self-replication essential.
+The paper's main setting is a network reproducing an encoding of its own parameters. It does not, by itself, demonstrate a modern pretrained model infecting an independently developed recipient model, nor does it establish a multi-generation lineage between distinct foundation models. That distinction is relevant, but it does not make parameter self-reproduction a new idea.
 
-### 3.2 Agent-level AI self-replication
+### 3.2 Gabor and colleagues: self-application, artificial chemistry, and inheritance
 
-Pan et al. describe capability-elicitation experiments for LLM-powered AI systems and claim successful self-replication without human intervention in a range of evaluated systems [2]. Their work is an arXiv preprint and labels itself as work in progress. Palisade Research later reported agents that exploit vulnerable hosts, transfer model weights and an execution harness, establish inference on new hosts, and chain the process across targets [3]. These studies address agent- and infrastructure-level replication.
+Gabor, Illium, Mattausch, Belzner, and Linnhoff-Popien presented *Self-Replication in Neural Networks* at ALIFE 2019 [2]. Their subsequent 2022 *Artificial Life* article extends that work [5]. The 2022 article formalizes **self-application**: a network is applied to another network to produce a network. It studies self-application and self-training, non-trivial fixed points in weight space, robustness to noise, and artificial-chemistry environments in which multiple neural networks interact as individuals [5].
 
-They are essential adjacent work, but the transfer mechanism differs from the core question here. In host-level replication, the model's weights and execution infrastructure are copied or redeployed. Weight-space contagion, as defined here, requires a different model to acquire a behavior in its own parameter state. The distinction is not about whether weights are involved in both cases; it is about what happens to the recipient model.
+This work is especially close to the current proposal. It already studies networks acting on network parameters and populations in which self-replicating structures can arise. The 2022 article also explicitly notes a boundary in its own experiments: it does not track genealogical relationships between particles. It identifies genealogical tracking as future work that could distinguish horizontal from vertical inheritance of information [5]. The same article points to Gabor et al.'s 2021 *Goals for Self-Replicating Neural Networks* for a "train on other" operator and for auxiliary fitness functions in a soup context [3]. Consequently, this project must not claim that inter-network parameter interaction, weight-space self-replication, or the biological analogy is itself new.
 
-### 3.3 Weight-based replicators
+A concrete possible direction is to revisit the lineage question with modern model families, explicit source/recipient provenance, independent behavioral evaluation, and causal tests that distinguish information carried by a network from information supplied by an external editor. That is a proposed direction, not an established novelty claim.
 
-Anthropic's October 2026 report explicitly discusses **weight-based replicators**: AI worms that propagate by compromising host machines and using their model weights as part of the malware payload, establishing inference on new hardware, and continuing propagation [4]. The report is an especially close conceptual neighbor because it uses both the language of worms and model weights.
+### 3.3 Further closely related work in artificial life
 
-The present proposal must not claim novelty for a model carrying weights between hosts. The narrower proposed distinction is **intra-model parameter-space transmission**: a pre-existing recipient model is modified so that it inherits the marker in its own parameter state, while remaining a distinct recipient rather than being replaced by a copied source checkpoint. Whether this distinction yields a genuinely new mechanism or only reframes existing model-transfer attacks remains an open literature question.
+Randazzo, Versari, and Mordvintsev published *Recursively Fertile Self-replicating Neural Agents* in the ALIFE 2021 proceedings [4]. The title and the author's project index make this a particularly important lead for any claim involving recursive or generational self-replication. The full text was not available in the sources inspected for this revision, so this paper's exact mechanism and overlap remain **unresolved**. It must be read and compared before the project makes any priority or novelty claim.
 
-### 3.4 Backdoor inheritance through model merging
+Gabor, Illium, Zorn, and Linnhoff-Popien's 2021 *Goals for Self-Replicating Neural Networks* addresses auxiliary goals in the self-replicating-network setting [3]. In a related 2022 paper, Illium and colleagues introduce **organism networks** composed of several neural particle networks; each particle performs a weight-application role while also being trained to self-replicate its own weights [6]. This is another direct precedent for collaborative structures built from self-replicating neural components. It is not equivalent to a current LLM transferring a learned behavioral marker into an unrelated recipient, but it makes broad claims about "the first network that infects another network" untenable.
 
-Yuan et al.'s *Merge Hijacking* demonstrates that a maliciously prepared model can cause a backdoor to be inherited by a model produced through merging [5]. This is direct evidence that parameter-combination operations can transfer behavior into a recipient model. It therefore covers an important part of the proposed P2 level.
+### 3.4 Agent-level AI self-replication
 
-A single successful merge does not establish a generational process. A P3 claim would require the resulting recipient—not the original source model and not a fixed payload supplied by the experimenter—to provide the information that enables a second recipient to inherit the marker. Even that result would need to be distinguished from an external editor simply remembering or re-injecting the same marker.
+Pan et al. report capability-elicitation experiments for LLM-powered AI systems and claim successful self-replication without human intervention across evaluated systems [7]. The work is an arXiv preprint; its results should be attributed to the authors and not presented as settled consensus.
 
-### 3.5 Persistence under continued fine-tuning
+Air et al. describe agents that exploit vulnerable hosts, transfer model weights and an execution harness, establish inference on new hosts, and chain replication [8]. This is host- and agent-level replication. Copying or redeploying model files and a harness is not the same event as modifying a distinct recipient model's own parameters so that it inherits a behavior.
 
-Cui et al. study persistence of implanted backdoors across multiple stages of continual fine-tuning and report high persistence under their tested conditions [6]. This motivates the persistence and robustness measurements in the proposed programme. Persistence is not reproduction: a marker may survive transformations while having no ability to transfer to another model.
+### 3.5 Weight-based AI replicators
 
-### 3.6 Weight-space alignment and direct editing
+Anthropic's October 2026 report uses the term **weight-based replicators** for AI worms that propagate through host compromise, carrying or retrieving model weights and establishing inference on compromised hardware [9]. This is a close contemporary threat model. It means this project must not claim novelty for AI worms that carry model weights between hosts.
 
-Ainsworth et al.'s *Git Re-Basin* examines permutation symmetries in neural networks and develops methods to align independently trained models for merging in weight space [7]. This matters because parameter coordinates are not generally semantically aligned across separately trained models. Raw tensor similarity is therefore insufficient evidence of functional transfer.
+The narrower distinction investigated here is whether a pre-existing recipient model is modified so that a marker becomes part of its own parameter state, the recipient retains it independently, and that recipient's parameter-carried information supports a further transfer. Whether this distinction is technically meaningful beyond existing artificial-life self-application and model-merging work remains an open question.
 
-Takehi et al. report experiments in which a general-purpose language model reads neural-network weights, infers behavior, writes smaller networks, and directly edits a language-model checkpoint [8]. Their November 2026 project publication motivates the possibility that an external editor can reason about model parameters and manipulate them without a gradient-descent training loop. It does not itself demonstrate the multi-generation transmission mechanism proposed here. The article is treated as a research publication by its authors, not as a peer-reviewed conference paper.
+### 3.6 Backdoor inheritance through model merging and persistence
 
-### 3.7 Novelty boundary
+Yuan et al.'s *Merge Hijacking* demonstrates that a model produced by merging can inherit a backdoor from a maliciously prepared uploaded model while retaining utility across tasks [10]. This already establishes a form of one-generation parameter-space behavior transfer and directly overlaps with the P2 level defined here.
 
-The reviewed literature already includes neural-network self-replication, agent-level self-replication, weight-carrying AI worms, backdoor transfer through merging, backdoor persistence through fine-tuning, parameter alignment, and direct weight editing. It would be inaccurate to claim that any of these individual ideas is new.
+Cui et al. investigate whether implanted backdoors persist through multi-stage continual fine-tuning and report high persistence under their tested conditions [11]. Persistence is an important property to measure, but it is not equivalent to transfer to a distinct recipient or multi-generation reproduction.
 
-The proposed research question is the conjunction of three requirements: (i) a source-carried behavioral structure is transferred into a distinct recipient's own parameters; (ii) the recipient independently retains that behavior after the source is removed; and (iii) the recipient then provides the source information for a second transfer without the experimenter supplying the marker contents. The preliminary review has not established whether this conjunction is novel. No priority claim is made.
+A single successful merge is not evidence that the recipient can serve as the source for another transfer. Conversely, the fact that the merge operation is externally performed does not make the inherited behavior unreal; it means that the carrier, editor, and operator roles must be distinguished and experimentally controlled.
+
+### 3.7 Weight-space alignment and direct editing
+
+Ainsworth et al.'s *Git Re-Basin* studies permutation symmetries in neural networks and methods for aligning models for weight-space merging [12]. This matters because parameter coordinates are not generally semantically aligned across independently trained models. Raw tensor similarity is therefore insufficient evidence of functional transfer.
+
+Takehi et al. report experiments in which a general-purpose language model inspects neural-network parameters, infers behavior, writes smaller networks, and directly edits a language-model checkpoint [13]. Their November 2026 article motivates the possibility that an external editor can reason about and manipulate parameters without gradient-descent training. It does not itself establish the multi-generation mechanism defined here. The article is treated as an authors' research article, not as a peer-reviewed conference paper.
+
+### 3.8 Novelty boundary
+
+The preliminary literature already contains neural networks that output their own weights, formal self-application operators, artificial-chemistry populations of interacting networks, work on goals and collaborative self-replicating neural structures, recursively fertile self-replicating neural agents, host-level AI replication, weight-based AI worms, backdoor inheritance through model merging, backdoor persistence, and direct weight editing.
+
+The project therefore does **not** claim to introduce neural-network self-replication, network-to-network parameter interaction, backdoor transfer, weight-based AI worms, or the general idea of generational replication. The potentially useful research direction is a carefully controlled investigation of **lineage-resolved, behaviorally validated parameter transfer in modern model families**, with causal tests separating source-carried information from external-editor knowledge and fixed replication logic. Gabor et al. explicitly identify genealogical tracking as an open direction in their 2022 article [5], but Randazzo et al.'s *Recursively Fertile* work [4] is an important nearby predecessor whose full-text overlap has not yet been resolved.
+
+The exact contribution may ultimately be a new benchmark, a modern replication/extension of earlier artificial-life results, a negative result showing that the hypothesized mechanism does not generalize to modern models, or no novel contribution at all. The current review is preliminary and non-systematic. No priority claim is made.
 
 ## 4. Research question and hypotheses
 
@@ -129,7 +143,7 @@ The proposed research question is the conjunction of three requirements: (i) a s
 - **RQ1 — Encoding:** Can a benign marker be associated with a model's parameter state in a way that can be distinguished from clean controls?
 - **RQ2 — Transfer:** Can the marker be transferred into a distinct recipient's parameters by a declared offline intervention, without copying the source checkpoint?
 - **RQ3 — Inheritance:** Does the recipient independently express the marker after the source and source-side state are removed?
-- **RQ4 — Generational reproduction:** Can the recipient become the sole source for a subsequent transfer, without the experimenter supplying the marker's semantic contents?
+- **RQ4 — Multi-generation parameter-space transmission:** Can the recipient become the sole source for a subsequent transfer, without the experimenter supplying the marker's semantic contents?
 - **RQ5 — Causal dependence:** Is source-carried information necessary for the transfer, or can the editor, prompt, or fixed procedure recreate the marker without it?
 - **RQ6 — Compatibility:** How do architecture, parameter alignment, initialization, and scale affect the result?
 - **RQ7 — Persistence and defense:** What happens after benign model transformations, and can model inspection or controlled probes detect and remove the marker?
@@ -160,7 +174,7 @@ Let \(M(\theta)\) be the measured marker performance of a checkpoint under a fix
 5. The source checkpoint is not copied into or substituted for B'.
 6. Clean-source, no-source, sham-intervention, and editor-only controls do not explain the result equally well.
 
-An A-to-B event is not sufficient for P3. A second-generation chain requires:
+An A-to-B event is not sufficient for P3. A P3 multi-generation chain requires:
 
 \[
 A \rightarrow B \rightarrow C,
@@ -271,22 +285,32 @@ The distinguishing test proposed here is a controlled, multi-generation paramete
 
 ## References
 
-[1] Thomas Gabor, Steffen Illium, Maximilian Zorn, Cristian Lenta, Andy Mattausch, Lenz Belzner, and Claudia Linnhoff-Popien. “Self-Replication in Neural Networks.” *Artificial Life* 28, no. 2 (2022): 205–223. https://doi.org/10.1162/artl_a_00359.
+[1] Oscar Chang and Hod Lipson. “Neural Network Quine.” In *Proceedings of the 2018 Conference on Artificial Life (ALIFE 2018)*, 234–241, 2018. https://doi.org/10.1162/isal_a_00049. Preprint: https://arxiv.org/abs/1803.05859.
 
-[2] Xudong Pan, Jiarun Dai, Yihe Fan, Minyuan Luo, Changyi Li, and Min Yang. “Large Language Model-Powered AI Systems Achieve Self-Replication with No Human Intervention.” arXiv:2503.17378, 2025. Work in progress. https://doi.org/10.48550/arXiv.2503.17378.
+[2] Thomas Gabor, Steffen Illium, Andy Mattausch, Lenz Belzner, and Claudia Linnhoff-Popien. “Self-Replication in Neural Networks.” In *Proceedings of the 2019 Conference on Artificial Life (ALIFE 2019)*, 424–431, 2019. https://doi.org/10.1162/isal_a_00197.
 
-[3] Alena Air, Reworr, Nikolaj Kotov, Dmitrii Volkov, John Steidley, and Jeffrey Ladish. “Language Models Can Autonomously Hack and Self-Replicate.” arXiv:2605.06760, 2026. https://arxiv.org/abs/2605.06760.
+[3] Thomas Gabor, Steffen Illium, Maximilian Zorn, and Claudia Linnhoff-Popien. “Goals for Self-Replicating Neural Networks.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 101–110, 2021. https://doi.org/10.1162/isal_a_00439.
 
-[4] William Zhou and Daniel Freeman, Anthropic Frontier Red Team. “AI Models May Be Capable of Self-Replicating Without Access to a Datacenter.” Anthropic Research, 12 October 2026. https://www.anthropic.com/research/self-replicating-ai.
+[4] Ettore Randazzo, Luca Versari, and Alexander Mordvintsev. “Recursively Fertile Self-replicating Neural Agents.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 58, 2021. https://doi.org/10.1162/isal_a_00367. The full text was not available in the sources inspected for this revision; its exact overlap remains unresolved.
 
-[5] Zenghui Yuan, Yangming Xu, Jiawen Shi, Pan Zhou, and Lichao Sun. “Merge Hijacking: Backdoor Attacks to Model Merging of Large Language Models.” In *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*, 32688–32703, 2025. https://doi.org/10.18653/v1/2025.acl-long.1571.
+[5] Thomas Gabor, Steffen Illium, Maximilian Zorn, Cristian Lenta, Andy Mattausch, Lenz Belzner, and Claudia Linnhoff-Popien. “Self-Replication in Neural Networks.” *Artificial Life* 28, no. 2 (2022): 205–223. https://doi.org/10.1162/artl_a_00359.
 
-[6] Jing Cui, Yufei Han, Jianbin Jiao, and Junge Zhang. “Persistent Backdoor Attacks under Continual Fine-Tuning of LLMs.” In *Proceedings of the AAAI Conference on Artificial Intelligence* 40, no. 36 (2026): 30422–30430. https://doi.org/10.1609/aaai.v40i36.40295.
+[6] Steffen Illium, Maximilian Zorn, Cristian Lenta, Michael Kölle, Claudia Linnhoff-Popien, and Thomas Gabor. “Constructing Organism Networks from Collaborative Self-Replicators.” In *Proceedings of the 2022 IEEE Symposium Series on Computational Intelligence (SSCI 2022)*, 1268–1275, 2022. https://doi.org/10.1109/SSCI51031.2022.10022216. Preprint: https://arxiv.org/abs/2212.10078.
 
-[7] Samuel K. Ainsworth, Jonathan Hayase, and Siddhartha Srinivasa. “Git Re-Basin: Merging Models modulo Permutation Symmetries.” In *International Conference on Learning Representations*, 2023. https://arxiv.org/abs/2209.04836.
+[7] Xudong Pan, Jiarun Dai, Yihe Fan, Minyuan Luo, Changyi Li, and Min Yang. “Large Language Model-Powered AI Systems Achieve Self-Replication with No Human Intervention.” arXiv:2503.17378, 2025. Work in progress. https://doi.org/10.48550/arXiv.2503.17378.
 
-[8] Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab. “Sparks of Weight-Space Programming: LLMs Can Natively Read & Write Neural Network Weights.” Authors' research article, 2 November 2026. https://rikiyat.github.io/blog/weight-space-programming/. Accompanying experiment logs: https://github.com/RikiyaT/lm_understand-logs.
+[8] Alena Air, Reworr, Nikolaj Kotov, Dmitrii Volkov, John Steidley, and Jeffrey Ladish. “Language Models Can Autonomously Hack and Self-Replicate.” arXiv:2605.06760, 2026. https://arxiv.org/abs/2605.06760.
+
+[9] William Zhou and Daniel Freeman, Anthropic Frontier Red Team. “AI Models May Be Capable of Self-Replicating Without Access to a Datacenter.” Anthropic Research, 12 October 2026. https://www.anthropic.com/research/self-replicating-ai.
+
+[10] Zenghui Yuan, Yangming Xu, Jiawen Shi, Pan Zhou, and Lichao Sun. “Merge Hijacking: Backdoor Attacks to Model Merging of Large Language Models.” In *Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*, 32688–32703, 2025. https://doi.org/10.18653/v1/2025.acl-long.1571.
+
+[11] Jing Cui, Yufei Han, Jianbin Jiao, and Junge Zhang. “Persistent Backdoor Attacks under Continual Fine-Tuning of LLMs.” In *Proceedings of the AAAI Conference on Artificial Intelligence* 40, no. 36 (2026): 30422–30430. https://doi.org/10.1609/aaai.v40i36.40295.
+
+[12] Samuel K. Ainsworth, Jonathan Hayase, and Siddhartha Srinivasa. “Git Re-Basin: Merging Models modulo Permutation Symmetries.” In *International Conference on Learning Representations*, 2023. https://arxiv.org/abs/2209.04836.
+
+[13] Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab. “Sparks of Weight-Space Programming: LLMs Can Natively Read & Write Neural Network Weights.” Authors' research article, 2 November 2026. https://rikiyat.github.io/blog/weight-space-programming/. Accompanying experiment logs: https://github.com/RikiyaT/lm_understand-logs.
 
 ## Version note
 
-This is a conceptual working paper dated 4 November 2026. It has not undergone peer review. It contains no original experimental results, and its novelty assessment is preliminary. The repository history records subsequent corrections and additions.
+This is a conceptual working paper dated 4 November 2026. It has not undergone peer review and contains no original experimental results. Its related-work review is preliminary and non-systematic. The full text of [4] was not inspected for this revision, so novelty relative to that work remains specifically unresolved. The repository history records subsequent corrections and additions.
