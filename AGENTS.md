@@ -9,9 +9,11 @@ This file governs research planning, documentation, experiments, and publication
 - The accepted experiment plan controls experiment-specific details; this constitution controls integrity and safety.
 
 ## 2. Research objective
-Investigate whether a neural network can carry a functional behavioral structure in its parameters, transfer it into a distinct recipient model's parameters, and leave the recipient able to serve as the source for a subsequent transfer.
+The repository formulates two related questions. First, can a donor model's condition-dependent behavior be transferred into a distinct recipient's own parameters through a parameter-changing operation? Second, can that recipient later serve as the source for a further transfer, with its own parameter-carried information causally necessary? The first is a possible P2 event; it is not, by itself, generational contagion. The second is the stronger P3 question.
 
-This is not a general study of cyber worms, model copying, or all neural backdoors. Copying a checkpoint, model file, runtime, prompt, or harness is not parameter-space transmission. A backdoor surviving a merge or fine-tuning is not sufficient evidence of generational reproduction. Novelty remains unestablished until a systematic review supports a narrower claim.
+The motivating scenario is donor-guided conditional-behavior implantation. It is a hypothetical problem statement, not a demonstrated technique. This is not a general study of cyber worms, model copying, or all neural backdoors. Copying a checkpoint, model file, runtime, prompt, adapter, memory, or harness is not parameter-space transmission. A backdoor surviving a merge may establish a one-generation transfer but is not sufficient evidence of generational reproduction. Novelty remains unestablished until a systematic review supports a narrower claim.
+
+**Author scope:** This repository is a conceptual problem statement and literature synthesis. The repository author is not conducting experiments, does not claim the team or infrastructure required to do so, and makes no commitment to produce experimental results. Evaluation considerations are written for independent research teams that may have the necessary expertise and resources; they are not an implementation plan or a promise of project testing.
 
 ## 3. Claim discipline
 Keep these claims separate:
@@ -40,7 +42,7 @@ Do not call a result autonomous merely because an automated tool executed it.
 - If an experiment crosses these boundaries, stop and redesign it as a harmless offline test or defensive study.
 
 ## 6. Experimental minimum
-Every experiment must record:
+This section applies only if a qualified independent team elects to conduct a future study. It does not create an expectation that the repository author will run experiments. Every such experiment must record:
 1. Objective and falsifiable hypothesis.
 2. Exact source and recipient checkpoints and provenance.
 3. Benign marker and independent test.
