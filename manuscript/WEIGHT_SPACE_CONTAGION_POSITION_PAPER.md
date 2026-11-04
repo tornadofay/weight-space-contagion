@@ -295,7 +295,7 @@ The scientific challenge is to distinguish information carried by the model from
 
 [3] Thomas Gabor, Steffen Illium, Maximilian Zorn, and Claudia Linnhoff-Popien. “Goals for Self-Replicating Neural Networks.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 101–110, 2021. https://doi.org/10.1162/isal_a_00439.
 
-[4] Ettore Randazzo, Luca Versari, and Alexander Mordvintsev. “Recursively Fertile Self-replicating Neural Agents.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, starting at page 546, 2021. https://doi.org/10.1162/isal_a_00367. The lead author's project note is available at https://oteret.github.io/posts/self-repl-nn/. The proceedings paper's full text was not available in the sources inspected for this revision; its exact overlap remains unresolved.
+[4] Ettore Randazzo, Luca Versari, and Alexander Mordvintsev. “Recursively Fertile Self-replicating Neural Agents.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 2021. https://doi.org/10.1162/isal_a_00367. The lead author's project note is available at https://oteret.github.io/posts/self-repl-nn/. The proceedings paper's full text was not available in the sources inspected for this revision; its exact overlap remains unresolved.
 
 [5] Thomas Gabor, Steffen Illium, Maximilian Zorn, Cristian Lenta, Andy Mattausch, Lenz Belzner, and Claudia Linnhoff-Popien. “Self-Replication in Neural Networks.” *Artificial Life* 28, no. 2 (2022): 205–223. https://doi.org/10.1162/artl_a_00359.
 
