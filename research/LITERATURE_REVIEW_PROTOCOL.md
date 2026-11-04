@@ -2,10 +2,10 @@
 
 **Version:** 0.1  
 **Prepared:** 2026-11-04  
-**Status:** Planned protocol; systematic search not yet completed.
+**Status:** Preliminary review guide; systematic search not completed. This document does not imply a commitment by the repository author to perform an exhaustive review or experiments.
 
 ## Objective
-Determine whether prior work already demonstrates the complete mechanism defined in this repository: source-carried behavioral information transferred into a distinct recipient's parameters, independent inheritance, and a further transfer causally supported by the recipient without operator-supplied marker contents.
+Determine how prior work addresses two distinct questions: (1) donor-guided transfer of condition-dependent behavior into a distinct recipient's own parameters (P2), and (2) a subsequent transfer causally supported by the recipient's parameter-carried information (P3). The review must also distinguish conditional backdoors, parameter editing, conventional model merging, prompt/adapter/harness changes, and trigger portability. This is a preliminary guide for future expert review, not a completed systematic review.
 
 ## Research areas
 1. Neural-network self-replication and artificial chemistry.
@@ -15,6 +15,9 @@ Determine whether prior work already demonstrates the complete mechanism defined
 5. Federated learning and cross-model parameter transfer.
 6. AI-agent self-replication and autonomous replication/adaptation.
 7. Model provenance, lineage, watermarking, detection, and remediation.
+8. Conditional backdoors, multi-turn activation, answer-side triggers, and positional triggers.
+9. Parameter-based knowledge editing, collateral utility regression, and cross-model trigger transfer.
+10. Model-layer and agent-harness supply-chain security.
 
 ## Search locations
 Cover arXiv, ACL Anthology, OpenReview, Proceedings of AAAI, IEEE Xplore, ACM Digital Library, USENIX, major machine-learning/security proceedings, and relevant artificial-life journals. Index services may supplement but should not replace primary-source verification.
@@ -28,6 +31,10 @@ Cover arXiv, ACL Anthology, OpenReview, Proceedings of AAAI, IEEE Xplore, ACM Di
 - "weight-based replicator" OR "AI self-replication"
 - (backdoor OR trojan) AND (model lineage OR generational OR propagation)
 - "autonomous replication and adaptation" AND model
+- "conditional backdoor" AND (model editing OR model merging OR parameter transfer)
+- "answer-side backdoor" OR "positional backdoor" OR "task-conditioned backdoor"
+- "parameter-based knowledge editing" AND (capability OR interference OR collateral)
+- "model layer" AND "agent harness" AND backdoor
 
 ## Inclusion criteria
 Include primary research that directly addresses neural-network self-replication, model-parameter manipulation or transfer, learned behavior inherited by another model, persistence across model transformations, or agent-level replication where the distinction from parameter-space transfer is analytically relevant.
