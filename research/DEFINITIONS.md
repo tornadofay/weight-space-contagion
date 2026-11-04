@@ -20,7 +20,7 @@ These definitions are provisional and prevent stronger claims from being inferre
 | P3 — Multi-generation parameter-space transmission | A P2 recipient becomes the source of a second validated transfer in an A→B→C lineage; the source-carried information is necessary and operator-supplied marker contents are excluded | Does not automatically establish autonomy; an external editor may still execute or orchestrate the transfer |
 | P4 — Autonomous carrier-mediated reproduction | The carrier itself initiates and directs reproduction; external tools may execute bounded low-level operations but do not supply the substantive marker information or replication decisions | Must be established separately from P3 |
 
-Earlier artificial-life literature already studies neural-network self-reproduction, self-application, interacting populations, and recursively fertile neural agents. These levels are an evidence taxonomy for this project, not a claim that the underlying concepts are new.
+Earlier artificial-life literature already studies neural-network self-reproduction, self-application, interacting populations, and recursively fertile neural agents. Randazzo et al. (2021), whose author's project note describes self-replication with and without variation and a genealogy of neural networks, is a particularly close predecessor whose full proceedings text has not yet been compared. P3 is an evidence taxonomy for this project, not a claim that multi-generation neural replication is a new concept.
 
 ## Transmission criteria
 
