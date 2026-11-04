@@ -94,7 +94,7 @@ A concrete possible direction is to revisit the lineage question with modern mod
 
 ### 3.3 Further closely related work in artificial life
 
-Randazzo, Versari, and Mordvintsev published *Recursively Fertile Self-replicating Neural Agents* in the ALIFE 2021 proceedings [4]. The title and the author's project index make this a particularly important lead for any claim involving recursive or generational self-replication. The full text was not available in the sources inspected for this revision, so this paper's exact mechanism and overlap remain **unresolved**. It must be read and compared before the project makes any priority or novelty claim.
+Randazzo, Versari, and Mordvintsev published *Recursively Fertile Self-replicating Neural Agents* in the ALIFE 2021 proceedings [4]. This is more than a title-level connection: the lead author's public project note says the work studies feedforward neural networks that encode a target image and self-replicate with and without variation; the author describes the project as creating a genealogy of neural networks encoding flowers [14]. This is a close prior-art lead for recursive reproduction, variation, and neural-network lineage. The full proceedings paper itself was not available in the sources inspected for this revision. Its exact replication unit, transfer mechanism, lineage definition, and relationship to the P3 criteria therefore remain **unresolved**. Until that paper is examined, P3 cannot be presented as a novel concept or a newly identified gap.
 
 Gabor, Illium, Zorn, and Linnhoff-Popien's 2021 *Goals for Self-Replicating Neural Networks* addresses auxiliary goals in the self-replicating-network setting [3]. In a related 2022 paper, Illium and colleagues introduce **organism networks** composed of several neural particle networks; each particle performs a weight-application role while also being trained to self-replicate its own weights [6]. This is another direct precedent for collaborative structures built from self-replicating neural components. It is not equivalent to a current LLM transferring a learned behavioral marker into an unrelated recipient, but it makes broad claims about "the first network that infects another network" untenable.
 
@@ -293,7 +293,7 @@ The scientific challenge is to distinguish information carried by the model from
 
 [3] Thomas Gabor, Steffen Illium, Maximilian Zorn, and Claudia Linnhoff-Popien. “Goals for Self-Replicating Neural Networks.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 101–110, 2021. https://doi.org/10.1162/isal_a_00439.
 
-[4] Ettore Randazzo, Luca Versari, and Alexander Mordvintsev. “Recursively Fertile Self-replicating Neural Agents.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, 58, 2021. https://doi.org/10.1162/isal_a_00367. The full text was not available in the sources inspected for this revision; its exact overlap remains unresolved.
+[4] Ettore Randazzo, Luca Versari, and Alexander Mordvintsev. “Recursively Fertile Self-replicating Neural Agents.” In *Proceedings of the 2021 Conference on Artificial Life (ALIFE 2021)*, starting at page 546, 2021. https://doi.org/10.1162/isal_a_00367. The lead author's project note is available at https://oteret.github.io/posts/self-repl-nn/. The proceedings paper's full text was not available in the sources inspected for this revision; its exact overlap remains unresolved.
 
 [5] Thomas Gabor, Steffen Illium, Maximilian Zorn, Cristian Lenta, Andy Mattausch, Lenz Belzner, and Claudia Linnhoff-Popien. “Self-Replication in Neural Networks.” *Artificial Life* 28, no. 2 (2022): 205–223. https://doi.org/10.1162/artl_a_00359.
 
@@ -312,6 +312,8 @@ The scientific challenge is to distinguish information carried by the model from
 [12] Samuel K. Ainsworth, Jonathan Hayase, and Siddhartha Srinivasa. “Git Re-Basin: Merging Models modulo Permutation Symmetries.” In *International Conference on Learning Representations*, 2023. https://arxiv.org/abs/2209.04836.
 
 [13] Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab. “Sparks of Weight-Space Programming: LLMs Can Natively Read & Write Neural Network Weights.” Authors' research article, 2 November 2026. https://rikiyat.github.io/blog/weight-space-programming/. Accompanying experiment logs: https://github.com/RikiyaT/lm_understand-logs.
+
+[14] Ettore Randazzo. “Recursively Fertile Self-replicating Neural Agents.” Author's project note, 21 July 2021. https://oteret.github.io/posts/self-repl-nn/. This is a project summary, not a substitute for the ALIFE 2021 proceedings paper [4].
 
 ## Version note
 
