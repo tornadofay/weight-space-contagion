@@ -1,0 +1,7 @@
+# Working Abstract
+
+Recent work on neural-network self-replication, AI-agent replication across hosts, backdoor inheritance through model merging, persistence under fine-tuning, and direct weight editing motivates a narrower research question: can a behavioral structure carried by one model's parameter state be transferred into a distinct recipient's own parameters, independently inherited, and then transferred onward from that recipient?
+
+This project calls the proposed phenomenon **weight-space contagion**. The term is a threat-model analogy, not a claim that such a capability has been demonstrated. The project distinguishes host-level model copying, behavioral embedding, one-generation parameter-space transfer, generational reproduction, and autonomy. It also treats the external editor as a separate causal component: if the editor supplies the marker or fixed replication logic, the carrier has not demonstrated autonomous reproduction.
+
+The current public paper is conceptual and contains no experimental results. It proposes falsifiable hypotheses, competing explanations, evidence thresholds, and a staged programme restricted to offline, owner-controlled synthetic models and harmless behavioral markers. The preliminary literature review identifies substantial prior work and does not establish novelty. The near-term contribution is a precise taxonomy and research agenda; empirical or priority claims require systematic review and controlled evidence.
