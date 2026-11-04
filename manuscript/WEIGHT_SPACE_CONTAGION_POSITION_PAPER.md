@@ -1,21 +1,23 @@
-# Weight-Space Contagion: A Research Agenda for Parameter-Space Transmission, Inheritance, and Reproduction of Learned Behaviors
+# Weight-Space Contagion: A Problem Statement and Threat Model for Conditional Behavior Transfer and Generational Reproduction
 
 **Author:** tornadofay  
-**Manuscript type:** Conceptual position paper and research agenda  
-**Version:** 0.1.0  
+**Manuscript type:** Conceptual position paper, problem statement, and threat-model proposal  
+**Version:** 0.2.0  
 **Date:** 4 November 2026  
 **Status:** Public working paper; not peer reviewed; no empirical results are claimed  
 **Project:** https://github.com/tornadofay/weight-space-contagion
 
 ## Abstract
 
-Recent work has examined several capabilities that make a new question about neural-network security worth asking. Neural networks can exhibit self-replicating dynamics in artificial-chemistry settings; language-model agents have been evaluated for self-replication across computing hosts; backdoor behavior can be inherited through model merging and persist through continued fine-tuning; and recent work reports that general-purpose language models can inspect and directly edit neural-network parameters. These findings concern related but distinct mechanisms. In particular, copying a model and its inference harness to another host is not the same event as transferring a behavioral structure into the parameters of a different model.
+Recent work on neural-network self-replication, model merging, backdoor persistence, and direct weight editing raises a set of related but distinct security questions. This paper focuses on a concrete hypothetical scenario: a donor model exhibits a condition-dependent behavior; an external editor is asked to use information from that donor to alter a distinct recipient model's parameters; and the recipient subsequently expresses the corresponding behavior under a specified task or context while retaining its ordinary functions in other situations. We call this **donor-guided conditional-behavior implantation**. The scenario could be security-relevant when the behavior is unauthorized or harmful, but this paper describes it only at a conceptual level and uses harmless markers as the appropriate basis for any future controlled evaluation.
 
-This paper proposes **weight-space contagion** as a provisional threat-model concept for investigating the latter possibility. The central question is whether a source model can carry a functional, benign behavioral marker in its parameter state; whether a distinct recipient can acquire that marker through a parameter-changing operation without receiving a copy of the source checkpoint; and whether the recipient can then serve as the source for a subsequent transfer. We distinguish parameter-space transmission, independent inheritance, generational reproduction, and autonomy. We also separate the role of a carrier from that of any external editor, orchestration layer, or fixed transfer procedure.
+The general idea of a model inheriting a backdoor through parameter operations is not new. In particular, *Merge Hijacking* demonstrates backdoor inheritance through conventional model merging. The narrower question worth isolating is whether a weight-space editor can use a donor as the source of functional information and produce a bounded parameter modification in a distinct recipient, rather than relying on ordinary model merging, checkpoint substitution, prompts, adapters, external memory, or changes to the execution harness. Whether such transfer is technically possible depends on model compatibility, parameter alignment, the kind of behavior involved, and the capabilities of the editor; arbitrary cross-model transplantation is not assumed.
 
-We do not claim that this mechanism has been demonstrated, that it is technically feasible in contemporary large language models, or that the concept is novel relative to all prior work. We identify adjacent research, formulate competing explanations, define operational evidence thresholds, and propose a staged experimental programme restricted to offline, owner-controlled synthetic models and harmless markers. The intended contribution at this stage is a falsifiable research agenda and a clearer taxonomy—not a deployable malware technique. A positive result would require evidence of a multi-generation parameter-space lineage in which source-carried information is causally necessary; a negative result would help identify the limits imposed by model architecture, parameter alignment, external mediation, and loss of inherited behavior.
+A single donor-to-recipient implantation is a one-generation parameter-space transfer question. It is not, by itself, generational contagion. The stronger question is whether the recipient can later serve as the source for a further transfer, with its own parameter-carried information causally necessary. We distinguish these levels, as well as conditional activation, capability transfer, policy or refusal changes, task routing, and actions performed by an external agent harness.
 
-**Keywords:** neural-network security; weight-space programming; model merging; backdoor inheritance; self-replication; parameter-space transfer; model supply chain; AI safety
+The contribution of this repository is a problem formulation, threat-model distinction, preliminary literature synthesis, and questions that may help qualified research teams investigate the topic. The repository author is not conducting experiments, does not claim the infrastructure or team required to do so, and makes no commitment to produce experimental results. No experiment, test result, implementation, or demonstration is reported. Any evaluation outline is conceptual guidance for independent researchers, not a project execution plan. Novelty remains unestablished; this work is intended to be useful to researchers already working in the relevant fields, not to claim priority over them.
+
+**Keywords:** neural-network security; conditional backdoors; weight-space programming; model merging; parameter-space transfer; behavioral inheritance; model supply chain; AI safety
 
 ---
 
@@ -76,6 +78,26 @@ The following levels help prevent stronger claims from being inferred from weake
 
 P0 through P4 are not a general maturity scale for AI systems. They are claim levels for this research question. P3 may be editor-mediated; it must not be called autonomous unless the additional P4 evidence is established. Earlier work in artificial life already studies neural self-application, populations of interacting networks, and self-replicating neural structures. The proposed levels are therefore an evaluation taxonomy, not a claim that such lower-level mechanisms are new.
 
+### 2.4 Motivating scenario: donor-guided conditional-behavior implantation
+
+Consider a hypothetical donor model that exhibits a particular behavior only under a certain task, request category, or conversational context. An external editor is given access to that donor and to a distinct recipient model. The editor attempts to use the donor as a source of functional information and encode an equivalent condition-dependent behavior into the recipient's own parameters. The recipient would continue to perform its ordinary tasks in other situations, but produce the implanted behavior when the relevant condition occurs.
+
+This is a **problem scenario**, not a report of a working technique. It does not assume that the donor's parameters can simply be copied into an arbitrary recipient, that the models share an architecture, or that the editor can infer and transplant arbitrary learned behavior. The donor, editor, recipient, conditioning rule, and runtime environment are separate components that must not be conflated.
+
+If the recipient's own parameters retain the behavior after the donor, editor, prompts, adapters, external memory, and other transfer-time state are removed, the single transfer would be a candidate P2 event under the definitions in this paper. It would still not establish P3. The latter would require a separate recipient-to-recipient transfer in which the first recipient is itself the source of the information needed for the next generation.
+
+### 2.5 What the scenario does and does not mean
+
+Several distinct mechanisms can produce superficially similar observations:
+
+- **Capability transfer:** the recipient acquires a task competence it did not previously have.
+- **Policy or refusal alteration:** the recipient already has the relevant competence, but a parameter change alters when it will or will not use it.
+- **Task routing or tool-selection change:** the recipient chooses a different response or tool call, without acquiring a new underlying capability.
+- **External prompt, adapter, memory, or harness change:** the behavior is supplied outside the recipient's base parameters and must not be described as parameter-space implantation.
+- **Model-layer behavior versus external action:** modified weights can change the model's outputs or tool-call proposals. An actual external operation depends on the surrounding harness, its code, permissions, and controls; a compromised extension can also act without a model-generated tool call [19].
+
+A task-conditioned behavior is not necessarily activated by a literal trigger phrase. Conditions may be described at the level of task semantics or interaction context, but claims about such activation must be distinguished from explicit-token, answer-side, or positional trigger mechanisms already studied [16, 17]. Nor does the existence of a trigger in one model imply that the trigger or behavior will transfer reliably to another model [20].
+
 ## 3. Related work
 
 ### 3.1 Neural Network Quine and early parameter self-reproduction
@@ -126,19 +148,37 @@ Ainsworth et al.'s *Git Re-Basin* studies permutation symmetries in neural netwo
 
 Takehi et al. report experiments in which a general-purpose language model inspects neural-network parameters, infers behavior, writes smaller networks, and directly edits a language-model checkpoint [13]. Their November 2026 article motivates the possibility that an external editor can reason about and manipulate parameters without gradient-descent training. It does not itself establish the multi-generation mechanism defined here. The article is treated as an authors' research article, not as a peer-reviewed conference paper.
 
-### 3.8 Novelty boundary
+### 3.8 Conditional backdoors and non-obvious activation conditions
 
-The preliminary literature already contains neural networks that output their own weights, formal self-application operators, artificial-chemistry populations of interacting networks, work on goals and collaborative self-replicating neural structures, recursively fertile self-replicating neural agents, neural cellular automata patterns with multi-generation self-replication and inheritable mutations, host-level AI replication, weight-based AI worms, backdoor inheritance through model merging, backdoor persistence, and direct weight editing.
+Recent work shows that backdoor activation in language models is not limited to an explicit trigger phrase typed by a user. Zhang et al. describe an answer-side backdoor in which a benign first interaction causes the model to produce a word that later appears in conversation history and serves as a trigger [16]. Wen et al.'s *MetaBackdoor* studies positional information, including context length, as an activation condition even when the visible text remains semantically ordinary [17].
 
-The project therefore does **not** claim to introduce neural-network self-replication, network-to-network parameter interaction, backdoor transfer, weight-based AI worms, or the general idea of generational replication. Sinapayen's NCA results [15] also show multi-generation pattern inheritance and mutation in a neural system, although the inherited units are cellular states under fixed learned update rules rather than model parameters transferred into a distinct recipient checkpoint. The potentially useful research direction is a carefully controlled investigation of **lineage-resolved, behaviorally validated parameter transfer in modern model families**, with causal tests separating source-carried information from external-editor knowledge and fixed replication logic. Gabor et al. identify genealogical tracking as an open direction in their 2022 article [5]; however, this cannot be treated as an unfilled gap because Randazzo et al.'s *Recursively Fertile* work [4] is an especially close predecessor whose full-text overlap has not yet been resolved. No novelty claim about multi-generation lineage is justified until that work is examined.
+These studies are relevant to the conditional part of the motivating scenario: hidden behavior can depend on context that is not an obvious malicious instruction. They do **not**, by themselves, demonstrate that a donor model's behavior has been transferred into a separate recipient's parameters. They concern backdoor construction and activation within evaluated models, not the specific donor-to-recipient translation mechanism proposed here.
 
-The exact contribution may ultimately be a new benchmark, a modern replication/extension of earlier artificial-life results, a negative result showing that the hypothesized mechanism does not generalize to modern models, or no novel contribution at all. The current review is preliminary and non-systematic. No priority claim is made.
+### 3.9 Trigger transfer is not guaranteed across models
+
+Meade, Patel, and Reddy study adversarial trigger transfer among 13 open models and report poor and inconsistent cross-model transfer [20]. This is not a study of transferring learned behavior through weight-space editing, but it cautions against assuming that a trigger or activation rule discovered in one model will function unchanged in another. The transfer of an entire behavior, the portability of its activation condition, and the recipient's retention of that behavior are separate questions.
+
+### 3.10 Parameter editing can damage unrelated capabilities
+
+Ren et al.'s ICML 2026 study examines parameter-based knowledge editing and reports that the evaluated methods damage core model capabilities, while a retrieval-based baseline performs better across their tested conditions [18]. This is an important counterweight to the assumption that a small or localized weight edit necessarily has a small behavioral footprint. Parameter count alone is not a measure of behavioral impact. Any future study of conditional implantation would need to consider collateral effects and ordinary-task utility, not only whether the target behavior appears.
+
+### 3.11 Model-layer and harness-layer security
+
+CERT-EU distinguishes backdoors in model weights from malicious code in an agent harness or extension [19]. A model-layer backdoor changes the model's behavior, for example by causing it to produce a particular response or tool-call proposal under a condition. Harness-layer code can instead execute with the user's permissions without the model selecting or requesting that action. These are distinct attack surfaces and require different evidence and defenses. A report of an external effect must therefore identify whether the causal change was in model parameters, the prompt or adapter stack, or the surrounding software.
+
+### 3.12 Novelty boundary
+
+Prior work already covers neural networks outputting their own weights, formal self-application, artificial-chemistry populations, recursively fertile self-replicating neural agents, neural cellular automata with inherited pattern mutations, host-level AI replication, weight-based AI worms, one-generation backdoor inheritance through model merging, backdoor persistence, conditional and non-obvious trigger activation, parameter-based model editing, and direct LLM-assisted weight editing.
+
+The repository does **not** claim to introduce neural-network self-replication, inter-network parameter interaction, model-merging backdoors, conditional backdoors, or generational replication. The motivating donor-to-recipient scenario overlaps directly with existing model-merging backdoor work at the level of one-generation behavior transfer. A narrower open question is whether a weight-space editor can use a donor's learned behavior as functional source information to create a bounded parameter update in a distinct recipient, with the result retained in that recipient and distinguished from conventional merging, editor-supplied content, prompts, adapters, and harness changes. This remains a research question, not a novelty claim.
+
+The broader P3 question—whether a recipient can become the source for a further transfer—must remain separate from the one-generation P2 scenario. Artificial-life prior art, especially Randazzo et al. (2021), remains a close review issue whose full-text overlap has not been resolved. No priority claim is justified. The contribution may be a useful threat-model clarification, a replication or extension of prior work, a negative result, or no novel mechanism at all.
 
 ## 4. Research question and hypotheses
 
 ### 4.1 Main research question
 
-**Can a benign behavioral structure encoded in one neural network's parameter state be transferred into a distinct model's parameters, inherited independently, and reproduced from that recipient into a further model?**
+**What are the mechanisms, limits, and security implications when a donor model's condition-dependent behavior is transferred into a distinct recipient's own parameters—and under what additional conditions, if any, can the recipient support a further transfer?**
 
 ### 4.2 Research questions
 
@@ -149,6 +189,9 @@ The exact contribution may ultimately be a new benchmark, a modern replication/e
 - **RQ5 — Causal dependence:** Is source-carried information necessary for the transfer, or can the editor, prompt, or fixed procedure recreate the marker without it?
 - **RQ6 — Compatibility:** How do architecture, parameter alignment, initialization, and scale affect the result?
 - **RQ7 — Persistence and defense:** What happens after benign model transformations, and can model inspection or controlled probes detect and remove the marker?
+- **RQ8 — Conditional activation:** Can a transferred behavior be conditioned on a task or context rather than a literal trigger string, and how should false activation be distinguished from intended activation?
+- **RQ9 — Behavior type:** Is the transferred function a new capability, a policy/refusal change, a task-routing change, or merely a change in tool-call selection?
+- **RQ10 — Transfer mechanism:** Can donor-guided direct weight editing be distinguished from conventional merging, editor-supplied reconstruction, checkpoint substitution, prompt/adapter changes, external memory, and harness modification?
 
 ### 4.3 Hypotheses
 
@@ -218,39 +261,39 @@ A positive result must be compared against at least the following explanations:
 
 The controls should include clean-source, no-source, no-transfer, sham-edit, editor-only, and source-information-ablation conditions. Tests should be independently administered and blinded where practical. Every failed and excluded trial must be retained with its reason.
 
-## 7. Proposed research programme
+## 7. Research directions for independently equipped teams
 
-The research programme is deliberately staged. Each stage has a stop gate. No stage requires external network access, exploitation, hidden persistence, stealth, or uncontrolled propagation.
+The stages below are conceptual research directions for independent teams with appropriate scientific, computational, and security infrastructure. They are not a work plan or commitment by the repository author. The author is not conducting experiments, and this repository provides no experimental implementation, test suite, results, or claim of capability to run the studies. Any team choosing to investigate the questions would need to design, authorize, resource, and govern its own protocol. The safety boundary remains offline, owner-controlled models and harmless markers.
 
 ### Stage 1 — Operational marker and baseline
 
-Specify a harmless synthetic marker with a deterministic test suite. Establish the behavior in a small, owner-controlled model and show that clean controls do not express it above the preregistered threshold. Record architecture, parameter shapes, dtypes, initialization, checkpoint hashes, and baseline utility.
+An independent team could first define a harmless synthetic marker and establish that it can be evaluated separately from unrelated task utility. The team would document the model family, parameter representation, checkpoint provenance, and relevant baseline behavior.
 
 **Gate:** the marker is independently measurable and clean controls are distinguishable before any transfer experiment.
 
 ### Stage 2 — Single-generation transfer
 
-Use a bounded, offline intervention to test whether a distinct recipient's parameters can acquire the marker. Record the identity of the editor, all tools, model inputs, prompts, allowed operations, and changed-parameter provenance. Do not copy the source checkpoint into the recipient.
+A separate study could compare whether a donor-conditioned parameter intervention changes a distinct recipient's own parameters and behavior. The study would need to distinguish direct weight editing from conventional merging, checkpoint substitution, and externally supplied behavior.
 
 **Gate:** the recipient independently expresses the marker after the source is removed, and the controls do not explain the result equally well.
 
 ### Stage 3 — Second-generation transfer
 
-Only after Stage 2 passes, test a lineage A-to-B-to-C. Remove A and all A-side state before the B-to-C stage. Do not provide the marker's semantics to the operator or editor. Preserve the exact same declared transfer budget and controls. The aim is to determine whether B's parameter state carries information necessary for C to inherit the marker.
+Only if a distinct recipient has first met a separately defined P2 criterion would an independent team have reason to consider the stronger A-to-B-to-C question. That study would need to establish whether the first recipient's parameter-carried information—not the original donor, the editor's memory, or a fixed external procedure—accounts for the second transfer.
 
 **Gate:** B, not A, is the sole carrier input for the second-generation step; C independently expresses the marker; clean-source/editor-only conditions do not produce comparable results.
 
 ### Stage 4 — Compatibility and persistence
 
-If Stage 3 succeeds, separately evaluate the effects of architecture differences, parameter alignment, benign fine-tuning, model merging, quantization, and checkpoint conversion. These are distinct experiments, not one broad robustness claim. Report utility regression and the boundary conditions for each result.
+A subsequent research effort could examine architecture differences, parameter alignment, benign fine-tuning, model merging, quantization, and checkpoint conversion as separate compatibility and persistence questions. No generality should be inferred from one condition. Report utility regression and the boundary conditions for each result.
 
 ### Stage 5 — Defensive evaluation
 
-Evaluate lineage provenance, checkpoint auditing, behavioral-marker probes, parameter inspection, and benign sanitization. Report false positives and false negatives on held-out clean and marked models. The goal is to inform detection and containment, not to evade them.
+Defensive researchers could examine checkpoint provenance, lineage records, behavioral screening, parameter inspection, containment, and benign sanitization. The purpose would be detection and mitigation, not evasion.
 
 ## 8. Measurement and reporting
 
-Every experiment must predeclare its target, marker, protocol, controls, primary metric, holdout policy, resource budget, success criteria, and analysis plan.
+For any independent study, the team responsible should predeclare its target, harmless marker, protocol, controls, primary metric, holdout policy, resource budget, success criteria, and analysis plan.
 
 Suggested measurements include:
 
@@ -267,7 +310,7 @@ Report trial-level results, uncertainty intervals, seeds, exclusions, resource u
 
 ## 9. Safety, ethics, and release policy
 
-This research concerns a threat model with potential cybersecurity implications. The initial programme is limited to offline, owner-controlled synthetic models and harmless behavioral markers. The work will not develop or publish a deployable self-propagating payload, host compromise workflow, exploit chain, credential collection mechanism, stealth, persistence, evasion, external scanning, or uncontrolled replication system.
+This problem has potential cybersecurity implications. Any independent study should be limited to offline, owner-controlled synthetic models and harmless behavioral markers. This repository will not develop or publish a deployable self-propagating payload, host-compromise workflow, exploit chain, credential-collection mechanism, stealth, evasion, external scanning, or uncontrolled replication system.
 
 Publication should prioritize operational definitions, reproducible benign benchmarks, causal controls, defensive detection, provenance, containment, and remediation. A result that requires unsafe implementation details should be reported at an appropriately abstract level with a defensive emphasis. Experiments must be manually initiated, bounded, reversible, and independently stoppable.
 
@@ -279,13 +322,11 @@ The preliminary literature review is not exhaustive. In particular, it must be e
 
 ## 11. Conclusion
 
-Weight-space contagion is proposed as a research question and threat-model analogy, not as a discovered capability. Neural-network self-reproduction is not new: Chang and Lipson's 2018 Neural Network Quine, Gabor et al.'s 2019 and 2022 self-application work, the 2021 work on goals and recursively fertile neural agents, and the 2022 work on collaborative organism networks establish a substantial artificial-life research foundation. Separately, AI-agent replication across hosts, weight-based AI-worm threat models, backdoor inheritance through model merging, backdoor persistence, and direct weight editing address adjacent mechanisms.
+This paper formulates a security-relevant problem rather than reporting a newly discovered capability. The motivating scenario is donor-guided conditional-behavior implantation: a donor model exhibits a condition-dependent behavior, and a weight-space editor is hypothesized to use the donor as a functional source when modifying a distinct recipient's own parameters. Conventional model merging already provides established prior art for one-generation backdoor inheritance. The narrower question is whether direct donor-guided weight editing can be distinguished from merging, editor-supplied reconstruction, prompt or adapter changes, checkpoint substitution, and harness modification, while accounting for model compatibility and collateral behavioral effects.
 
-The project therefore does not claim to introduce neural self-replication, network-to-network parameter interaction, or the general concept of generational reproduction. A possible contribution is a lineage-resolved and causally controlled study of benign behavioral transfer in modern model families: whether a distinct recipient inherits a behavior in its own parameters and whether information carried by that recipient is necessary for a subsequent transfer. Gabor et al. explicitly identify genealogical tracking as future work in their 2022 paper, but Randazzo et al.'s *Recursively Fertile Self-replicating Neural Agents* (2021) is a close predecessor whose full-text overlap remains unresolved. The literature review must be completed before the proposed gap can be described as novel.
+A single successful recipient implantation would be a P2-level transfer claim, not proof of generational contagion. P3 would require a separate recipient-to-recipient lineage in which the first recipient's own parameter-carried information is causally relevant to a second transfer. P4 autonomy is a still stronger and independent claim. Conditional behavior, capability transfer, policy changes, task routing, and external tool execution must also be evaluated as distinct phenomena.
 
-The scientific challenge is to distinguish information carried by the model from information supplied by an editor, operator, or fixed external procedure. Until the relevant prior work has been fully compared and controlled experiments have been conducted, the correct status is a falsifiable research agenda—not a demonstrated AI virus or an established original mechanism.
-
----
+The repo's contribution is to state the problem, organize its terminology, connect it to adjacent literature, and identify distinctions that may help experts design or reject further work. Its author is not conducting or committing to experiments and does not claim the infrastructure or team required to do so. No experimental results, implementation, or empirical validation are claimed. The paper makes no novelty or priority claim; its value is to make the question clearer and useful to researchers already working in neural-network security, model editing, artificial life, and AI safety.
 
 ## References
 
@@ -319,6 +360,18 @@ The scientific challenge is to distinguish information carried by the model from
 
 [15] Lana Sinapayen. “Self-Replication, Spontaneous Mutations, and Exponential Genetic Drift in Neural Cellular Automata.” *Qeios*, Research Article (Preprint), 23 May 2023. https://doi.org/10.32388/JPUWVB. arXiv:2305.13043, https://arxiv.org/abs/2305.13043. Code and data links are provided by the author at https://github.com/LanaSina/NCA_self_replication.
 
+
+
+[16] Yibo Zhang, Tianrong Guan, Liang Lin, Puze Wang, Jin Wang, and Qingsong Wen. “The Model Plants the Trigger: Answer-Side Backdoor Attacks in Multi-Turn Large Language Models.” In *Findings of the Association for Computational Linguistics: EMNLP 2026*, 39113–39127. https://doi.org/10.18653/2026.findings-emnlp.1832.
+
+[17] Rui Wen, Mark Russinovich, Andrew Paverd, Jun Sakuma, and Ahmed Salem. “MetaBackdoor: Exploiting Positional Encoding as a Backdoor Attack Surface in LLMs.” arXiv:2605.15172, May 2026. https://arxiv.org/abs/2605.15172.
+
+[18] Wanying Ren, Xin Song, Futing Wang, Guoxiu He, and Aixin Sun. “Revisiting Parameter-Based Knowledge Editing in Large Language Models: Theoretical Limits and Empirical Evidence.” In *Proceedings of the 43rd International Conference on Machine Learning*, PMLR 306, 2026. https://proceedings.mlr.press/v306/ren26p.html.
+
+[19] CERT-EU. “Beyond the Model: Backdoors in AI Agent Harnesses.” 30 October 2026. https://www.cert.europa.eu/blog/beyond-the-model-backdoors-in-ai-agent-harnesses.
+
+[20] Nicholas Meade, Arkil Patel, and Siva Reddy. “Investigating Adversarial Trigger Transfer in Large Language Models.” *Transactions of the Association for Computational Linguistics* 13 (2025): 953–979. https://doi.org/10.1162/tacl.a.27.
+
 ## Version note
 
-This is a conceptual working paper dated 4 November 2026. It has not undergone peer review and contains no original experimental results. Its related-work review is preliminary and non-systematic. The full text of [4] was not inspected for this revision, so novelty relative to that work remains specifically unresolved. The repository history records subsequent corrections and additions.
+This is a conceptual problem statement and threat-model paper dated 4 November 2026, version 0.2.0. It has not undergone peer review and contains no original experimental results. The author is not conducting experiments and does not claim experimental infrastructure. Its related-work review is preliminary and non-systematic. The full text of [4] was not inspected for this revision, so novelty relative to that work remains specifically unresolved.
