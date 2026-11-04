@@ -152,10 +152,10 @@ The exact contribution may ultimately be a new benchmark, a modern replication/e
 
 - **H1 (single-generation transfer):** Under at least one controlled, benign experimental condition, a parameter-changing intervention can transfer a predeclared marker from a source model into a distinct recipient model without copying the source checkpoint.
 - **H2 (independent inheritance):** A recipient that passes the transfer criterion continues to express the marker when evaluated without access to the source model or its runtime state.
-- **H3 (generational reproduction):** At least one recipient can serve as the source for a second validated transfer, with source-carried information causally necessary and no experimenter-supplied marker content.
+- **H3 (multi-generation transmission):** At least one recipient can serve as the source for a second validated transfer, with source-carried information causally necessary and no experimenter-supplied marker content.
 - **H4 (bounded generality):** Transfer success depends on identifiable conditions such as architecture family, parameter alignment, editor capabilities, and transfer protocol rather than being universal.
 
-H1–H4 are hypotheses, not findings. Failure of H1 would block the stronger claims. H1 without H3 would establish only one-generation transfer. H3 without evidence for source-carried causal dependence would not justify an autonomy claim.
+H1–H4 are hypotheses, not findings. Failure of H1 would block the stronger claims. H1 without H3 would establish only one-generation transfer. H3 without evidence for source-carried causal dependence would not justify a P3 claim; a P3 result would still not establish P4 autonomy.
 
 ## 5. Formalization and evidence criteria
 
@@ -188,7 +188,7 @@ A particularly important confound is that an external editor may do all the mean
 
 A causal test must therefore compare the transfer outcome when the source model is present, absent, replaced by a clean source, or deprived of the information alleged to encode the marker. The editor's memory and prompts must not reveal the marker contents. If the transfer succeeds only because the editor already knows what to write, the claim is editor-mediated injection, not carrier-based reproduction.
 
-Even a successful second-generation transfer should be described as **editor-mediated generational transmission** unless the experiment also shows that the carrier can initiate and direct the process without human intervention or a fixed external replicator. Autonomy is an independent, higher evidence threshold.
+Even a successful second-generation transfer should be described as **editor-mediated multi-generation parameter-space transmission** unless the experiment also shows that the carrier can initiate and direct the process without human intervention or a fixed external replicator. Autonomy is an independent, higher evidence threshold.
 
 ### 5.2 Model reproduction number
 
@@ -277,9 +277,11 @@ The preliminary literature review is not exhaustive. In particular, it must be e
 
 ## 11. Conclusion
 
-Weight-space contagion is proposed as a precise research question, not as a discovered capability. Existing research already covers self-replicating neural-network structures, autonomous AI-agent replication across hosts, weight-based replicators, backdoor transfer through model merging, backdoor persistence, and direct neural-network weight editing. Those results make the question worth studying, but they also sharply limit what can honestly be claimed as new.
+Weight-space contagion is proposed as a research question and threat-model analogy, not as a discovered capability. Neural-network self-reproduction is not new: Chang and Lipson's 2018 Neural Network Quine, Gabor et al.'s 2019 and 2022 self-application work, the 2021 work on goals and recursively fertile neural agents, and the 2022 work on collaborative organism networks establish a substantial artificial-life research foundation. Separately, AI-agent replication across hosts, weight-based AI-worm threat models, backdoor inheritance through model merging, backdoor persistence, and direct weight editing address adjacent mechanisms.
 
-The distinguishing test proposed here is a controlled, multi-generation parameter-space lineage in which a distinct recipient inherits a benign behavioral marker in its own parameters and then supplies the source-carried information for a further recipient. The critical scientific challenge is to show that the carrier—not an editor's prior knowledge, a fixed external script, or copied checkpoint data—causally explains the second transfer. Until such evidence exists, the correct status is a falsifiable research hypothesis and a preliminary research agenda.
+The project therefore does not claim to introduce neural self-replication, network-to-network parameter interaction, or the general concept of generational reproduction. A possible contribution is a lineage-resolved and causally controlled study of benign behavioral transfer in modern model families: whether a distinct recipient inherits a behavior in its own parameters and whether information carried by that recipient is necessary for a subsequent transfer. Gabor et al. explicitly identify genealogical tracking as future work in their 2022 paper, but Randazzo et al.'s *Recursively Fertile Self-replicating Neural Agents* (2021) is a close predecessor whose full-text overlap remains unresolved. The literature review must be completed before the proposed gap can be described as novel.
+
+The scientific challenge is to distinguish information carried by the model from information supplied by an editor, operator, or fixed external procedure. Until the relevant prior work has been fully compared and controlled experiments have been conducted, the correct status is a falsifiable research agenda—not a demonstrated AI virus or an established original mechanism.
 
 ---
 
