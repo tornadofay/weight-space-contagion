@@ -1,15 +1,15 @@
 cff-version: 1.2.0
-message: "Cite this repository as a versioned conceptual working paper and research agenda. It is not peer reviewed and reports no empirical demonstration of weight-space contagion."
-title: "Weight-Space Contagion: A Research Agenda for Parameter-Space Transmission, Inheritance, and Reproduction of Learned Behaviors"
+message: "Cite this repository as a versioned conceptual problem statement and threat-model proposal. It is not peer reviewed and reports no empirical demonstration."
+title: "Weight-Space Contagion: A Problem Statement and Threat Model for Conditional Behavior Transfer and Generational Reproduction"
 type: other
 authors:
   - name: "tornadofay"
-version: "0.1.0"
+version: "0.2.0"
 date-released: 2026-11-04
 abstract: >-
-  A conceptual research paper investigating whether a benign behavioral
-  structure encoded in one neural network's parameter state can be transferred
-  into a distinct recipient model's parameters, independently inherited, and
-  potentially transferred onward. It distinguishes parameter-space transmission
-  from model-file replication and proposes a safe experimental programme. No
-  empirical demonstration is claimed.
+  A conceptual problem statement describing a hypothetical donor-guided
+  transfer of condition-dependent behavior into a distinct recipient model's
+  own parameters. It separates one-generation implantation from generational
+  parameter-space transmission and distinguishes model-weight changes from
+  prompts, adapters, external memory, and harness modifications. No experiments
+  or empirical demonstrations are reported.
