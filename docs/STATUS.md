@@ -18,7 +18,7 @@
 - No multi-generation transmission has been demonstrated by this project.
 - No autonomy claim is made.
 - Novelty has not been established; the review is preliminary and non-systematic.
-- The full text of Randazzo et al. (2021), *Recursively Fertile Self-replicating Neural Agents*, was not available in the sources inspected during the latest revision; its precise overlap remains unresolved.
+- Randazzo et al. (2021), *Recursively Fertile Self-replicating Neural Agents*, is a particularly close predecessor. The lead author's public note describes feedforward networks that encode an image and self-replicate with and without variation, and a genealogy of neural networks. The full proceedings paper was not available in the sources inspected; its exact overlap with P3 remains unresolved and blocks any novelty claim.
 - No journal or conference submission, arXiv submission, DOI archival release, or peer-reviewed acceptance has occurred.
 
 ## Next gates
