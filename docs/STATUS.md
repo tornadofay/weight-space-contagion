@@ -7,7 +7,7 @@
 ## Established
 - Central research question and provisional operational terminology are documented.
 - Claim levels distinguish host-level replication, behavioral embedding/persistence, one-generation parameter-space transmission, multi-generation transmission, and autonomy.
-- The paper and related-work map now acknowledge foundational neural self-replication research from 2018 onward, including Neural Network Quine, Gabor et al. (2019, 2021, 2022), Randazzo et al. (2021), and collaborative organism networks (2022).
+- The paper and related-work map now acknowledge foundational neural self-replication research from 2018 onward, including Neural Network Quine, Gabor et al. (2019, 2021, 2022), Randazzo et al. (2021), collaborative organism networks (2022), and Sinapayen's NCA pattern replication with inheritable mutation (2023).
 - Competing explanations and minimum evidence thresholds are documented.
 - Offline, owner-controlled, benign-marker safety boundaries are recorded.
 - A conceptual working paper, preliminary bibliography, and systematic-review protocol are available.
@@ -18,6 +18,7 @@
 - No multi-generation transmission has been demonstrated by this project.
 - No autonomy claim is made.
 - Novelty has not been established; the review is preliminary and non-systematic.
+- Sinapayen (2023) demonstrates multi-generation replication and inheritable mutations in NCA patterns/cell states under fixed learned update rules; it is adjacent but is not evidence of transferring the NCA rule-network weights into another model.
 - Randazzo et al. (2021), *Recursively Fertile Self-replicating Neural Agents*, is a particularly close predecessor. The lead author's public note describes feedforward networks that encode an image and self-replicate with and without variation, and a genealogy of neural networks. The full proceedings paper was not available in the sources inspected; its exact overlap with P3 remains unresolved and blocks any novelty claim.
 - No journal or conference submission, arXiv submission, DOI archival release, or peer-reviewed acceptance has occurred.
 
