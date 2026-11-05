@@ -4,7 +4,7 @@
 **Status:** Preliminary, web-based, non-systematic review  
 **Purpose:** Identify adjacent work, prevent novelty overclaims, and define the next systematic search.
 
-This review was expanded during a repository revision. It is still not systematic: no database-by-database screening, complete forward/backward citation review, or exhaustive full-text comparison has been completed. In particular, the full text of Randazzo et al. (2021) was not available in the sources inspected and remains an explicit review gap.
+This review was expanded during a repository revision. It is still not systematic: no database-by-database screening, complete forward/backward citation review, or exhaustive full-text comparison has been completed. In particular, the proceedings volume and table of contents for Randazzo et al. (2021) have been located, but the paper pages could not be inspected from the available PDF source; its full-text comparison remains an explicit review gap.
 
 ## 1. Neural Network Quine
 
