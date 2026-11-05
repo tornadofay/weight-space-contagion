@@ -2,14 +2,14 @@
 
 **Author:** tornadofay  
 **Manuscript type:** Conceptual position paper, problem statement, and threat-model proposal  
-**Version:** 0.2.0  
-**Date:** 4 November 2026  
+**Version:** 0.2.1  
+**Date:** 5 November 2026  
 **Status:** Public working paper; not peer reviewed; no empirical results are claimed  
 **Project:** https://github.com/tornadofay/weight-space-contagion
 
 ## Abstract
 
-Recent work on neural-network self-replication, model merging, backdoor persistence, and direct weight editing raises a set of related but distinct security questions. This paper focuses on a concrete hypothetical scenario: a donor model exhibits a condition-dependent behavior; an external editor is asked to use information from that donor to alter a distinct recipient model's parameters; and the recipient subsequently expresses the corresponding behavior under a specified task or context while retaining its ordinary functions in other situations. We call this **donor-guided conditional-behavior implantation**. The scenario could be security-relevant when the behavior is unauthorized or harmful, but this paper describes it only at a conceptual level and uses harmless markers as the appropriate basis for any future controlled evaluation.
+Recent work on neural-network self-replication, model merging, backdoor persistence, and direct weight editing raises a set of related but distinct security questions. This paper focuses on a concrete hypothetical scenario: a donor model exhibits a condition-dependent behavior; an external editor is asked to use information from that donor to alter a distinct recipient model's base parameters; and the intended result is for the recipient to express the corresponding behavior under a specified task or context while retaining its ordinary functions in other situations. We call this **donor-guided conditional-behavior implantation**. The scenario could be security-relevant when the behavior is unauthorized or harmful, but this paper describes it only at a conceptual level and uses harmless markers as the appropriate basis for any future controlled evaluation.
 
 The general idea of a model inheriting a backdoor through parameter operations is not new. In particular, *Merge Hijacking* demonstrates backdoor inheritance through conventional model merging. The narrower question worth isolating is whether a weight-space editor can use a donor as the source of functional information and produce a bounded parameter modification in a distinct recipient, rather than relying on ordinary model merging, checkpoint substitution, prompts, adapters, external memory, or changes to the execution harness. Whether such transfer is technically possible depends on model compatibility, parameter alignment, the kind of behavior involved, and the capabilities of the editor; arbitrary cross-model transplantation is not assumed.
 
@@ -74,7 +74,7 @@ The following levels help prevent stronger claims from being inferred from weake
 |---|---|---|
 | P0 | Host-level model or agent replication | A model, checkpoint, runtime, or harness is copied or redeployed on another host |
 | P1 | Behavioral embedding or persistence | A model expresses a marker after a defined intervention or transformation |
-| P2 | One-generation parameter-space transmission | A distinct recipient acquires the marker through a parameter-changing operation without source-checkpoint substitution |
+| P2 | One-generation parameter-space transmission | A distinct recipient acquires the marker in its own base parameters through a parameter-changing operation and expresses it independently after transfer-time components are removed |
 | P3 | Multi-generation parameter-space transmission | A validated A→B→C lineage exists; A and A-side state are absent in the second transition, and B's carrier state supplies the relevant source information for C |
 | P4 | Autonomous carrier-mediated reproduction | P3 plus evidence that the carrier itself initiates and directs reproduction, rather than an operator/editor or fixed external replicator supplying the substantive information and decisions |
 
@@ -98,7 +98,7 @@ Several distinct mechanisms can produce superficially similar observations:
 - **External prompt, adapter, memory, or harness change:** the behavior is supplied outside the recipient's base parameters and must not be described as parameter-space implantation.
 - **Model-layer behavior versus external action:** modified weights can change the model's outputs or tool-call proposals. An actual external operation depends on the surrounding harness, its code, permissions, and controls; a compromised extension can also act without a model-generated tool call [19].
 
-A task-conditioned behavior is not necessarily activated by a literal trigger phrase. Conditions may be described at the level of task semantics or interaction context, but claims about such activation must be distinguished from explicit-token, answer-side, or positional trigger mechanisms already studied [16, 17]. Nor does the existence of a trigger in one model imply that the trigger or behavior will transfer reliably to another model [20].
+A task-conditioned behavior is not necessarily activated by a literal trigger phrase. Conditions may be described at the level of task semantics or interaction context, but claims about such activation must be distinguished from explicit-token, answer-side, or positional trigger mechanisms already studied [16, 17]. Nor should adversarial trigger sequences optimized on one model be assumed to transfer reliably to another: Meade et al. report poor and inconsistent cross-model transfer of those triggers [20]. This finding concerns adversarial input triggers, not donor-guided weight-space transplantation.
 
 ## 3. Related work
 
@@ -197,8 +197,8 @@ The broader P3 question—whether a recipient can become the source for a furthe
 
 ### 4.3 Hypotheses
 
-- **H1 (single-generation transfer):** Under at least one controlled, benign experimental condition, a parameter-changing intervention can transfer a predeclared marker from a source model into a distinct recipient model without copying the source checkpoint.
-- **H2 (independent inheritance):** A recipient that passes the transfer criterion continues to express the marker when evaluated without access to the source model or its runtime state.
+- **H1 (single-generation transfer):** Under at least one controlled, benign condition, a weight-space intervention using a donor as the source of functional information can cause a distinct recipient to encode a corresponding benign behavior in its own base parameters, without copying or substituting the donor checkpoint.
+- **H2 (independent inheritance):** A recipient that passes the transfer criterion continues to express the condition-dependent marker using its own base parameters when the donor, editor, prompts, adapters, external memory, and transfer-specific harness changes are absent.
 - **H3 (multi-generation transmission):** At least one recipient can serve as the source for a second validated transfer, with source-carried information causally necessary and no experimenter-supplied marker content.
 - **H4 (bounded generality):** Transfer success depends on identifiable conditions such as architecture family, parameter alignment, editor capabilities, and transfer protocol rather than being universal.
 
@@ -215,11 +215,12 @@ Let a source checkpoint be represented by parameter state \(\theta_A\), and a di
 Let \(M(\theta)\) be the measured marker performance of a checkpoint under a fixed, independently administered evaluation protocol. A P2 transmission event requires, at minimum:
 
 1. A and B are distinct, immutable, hash-identified checkpoints.
-2. B does not satisfy the marker criterion before intervention.
-3. B's parameters are changed by the declared intervention.
-4. B' satisfies the predeclared marker criterion on held-out tests.
-5. The source checkpoint is not copied into or substituted for B'.
-6. Clean-source, no-source, sham-intervention, and editor-only controls do not explain the result equally well.
+2. B does not satisfy the predeclared marker criterion before intervention.
+3. The declared intervention changes B's own base parameters; the result is not a checkpoint or parameter-subset substitution.
+4. B' satisfies the predeclared marker criterion on held-out tests under the declared condition.
+5. B' is evaluated using the recipient's ordinary inference configuration, without access to the donor or editor and without transfer-specific prompts, adapters, retrieval, external memory, or special harness code.
+6. Clean-source, no-source, sham-intervention, editor-only, and relevant external-component controls do not explain the result equally well.
+7. For a condition-dependent marker, matched condition-absent inputs are evaluated to measure false activation. Retained utility on unrelated tasks is reported separately as a collateral-effects measure.
 
 An A-to-B event is not sufficient for P3. A P3 multi-generation chain requires:
 
@@ -303,7 +304,7 @@ Suggested measurements include:
 - **Inheritance fidelity:** marker performance of a recipient when evaluated independently from its source.
 - **Generational success:** fraction of validated generation-1 carriers that produce a validated generation-2 recipient under the declared protocol.
 - **Causal dependence:** difference between source-present and source-absent or source-information-ablated conditions.
-- **Host utility:** retained performance on unrelated tasks and any measured collateral behavior.
+- **Recipient utility:** retained performance on unrelated tasks and any measured collateral behavior.
 - **Parameter provenance:** checkpoint hashes, changed tensor summaries, edit manifests, and proof that the recipient was not replaced by the source.
 - **Robustness:** marker performance after each separately declared benign model transformation.
 - **Detection:** true-positive and false-positive rates for defensive inspection and behavioral probes.
@@ -363,7 +364,6 @@ The repo's contribution is to state the problem, organize its terminology, conne
 [15] Lana Sinapayen. “Self-Replication, Spontaneous Mutations, and Exponential Genetic Drift in Neural Cellular Automata.” *Qeios*, Research Article (Preprint), 23 May 2023. https://doi.org/10.32388/JPUWVB. arXiv:2305.13043, https://arxiv.org/abs/2305.13043. Code and data links are provided by the author at https://github.com/LanaSina/NCA_self_replication.
 
 
-
 [16] Yibo Zhang, Tianrong Guan, Liang Lin, Puze Wang, Jin Wang, and Qingsong Wen. “The Model Plants the Trigger: Answer-Side Backdoor Attacks in Multi-Turn Large Language Models.” In *Findings of the Association for Computational Linguistics: EMNLP 2026*, 39113–39127. https://doi.org/10.18653/2026.findings-emnlp.1832.
 
 [17] Rui Wen, Mark Russinovich, Andrew Paverd, Jun Sakuma, and Ahmed Salem. “MetaBackdoor: Exploiting Positional Encoding as a Backdoor Attack Surface in LLMs.” arXiv:2605.15172, May 2026. https://arxiv.org/abs/2605.15172.
@@ -376,4 +376,4 @@ The repo's contribution is to state the problem, organize its terminology, conne
 
 ## Version note
 
-This is a conceptual problem statement and threat-model paper dated 4 November 2026, version 0.2.0. It has not undergone peer review and contains no original experimental results. The author is not conducting experiments and does not claim experimental infrastructure. Its related-work review is preliminary and non-systematic. The full text of [4] was not inspected for this revision, so novelty relative to that work remains specifically unresolved.
+This is a conceptual problem statement and threat-model paper dated 5 November 2026, version 0.2.1. It has not undergone peer review and contains no original experimental results. The author is not conducting experiments and does not claim experimental infrastructure. Its related-work review is preliminary and non-systematic. The full text of [4] was not inspected for this revision, so novelty relative to that work remains specifically unresolved.
