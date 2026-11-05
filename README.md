@@ -10,7 +10,7 @@ The scenario is hypothetical. The project distinguishes a one-generation behavio
 
 **[Weight-Space Contagion: A Problem Statement and Threat Model for Conditional Behavior Transfer and Generational Reproduction](manuscript/WEIGHT_SPACE_CONTAGION_POSITION_PAPER.md)**
 
-<sub>Conceptual position paper · Version 0.2.0 · 4 November 2026 · Not peer reviewed · No empirical results claimed</sub>
+<sub>Conceptual position paper · Version 0.2.1 · 5 November 2026 · Not peer reviewed · No empirical results claimed</sub>
 
 The paper describes a hypothetical donor → editor → recipient scenario, distinguishes conditional behavior implantation from generational reproduction, reviews prior work, and identifies questions for independent research teams. It is a problem formulation, not an experimental proposal by the repository author.
 
@@ -44,7 +44,7 @@ The donor-guided scenario intersects established work on model-merging backdoors
 
 ## Core definitions
 
-- **Marker / payload:** a benign, measurable behavioral structure specified before evaluation.
+- **Marker:** a benign, measurable behavior specified before evaluation.
 - **Carrier:** a model whose parameter state encodes or implements the marker.
 - **Transmission:** a parameter-changing operation causes a distinct recipient to express the marker; copying the source checkpoint is excluded.
 - **Inheritance:** the recipient independently retains it after the source is removed.
@@ -99,4 +99,4 @@ No project license has been selected. Public visibility does not itself grant pe
 
 ## Citation
 
-See [CITATION.cff](CITATION.cff). Cite the repository only as a versioned conceptual working paper and research proposal—not as evidence that weight-space contagion has been demonstrated.
+See [CITATION.cff](CITATION.cff). Cite the repository as a versioned conceptual problem statement and threat-model proposal—not as evidence that weight-space contagion has been demonstrated.
