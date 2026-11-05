@@ -1,8 +1,9 @@
 # Research Status
 
-**As of:** 2026-11-04  
+**As of:** 2026-11-05  
 **Repository:** https://github.com/tornadofay/weight-space-contagion  
-**Current stage:** Public conceptual problem statement, threat-model proposal, and preliminary literature synthesis.
+**Current stage:** Public conceptual problem statement, threat-model proposal, and preliminary literature synthesis.  
+**Current paper:** Version 0.2.1, dated 2026-11-05.
 
 ## Established
 - The donor-guided conditional-behavior implantation scenario is documented as a hypothetical one-generation P2 problem.
@@ -35,4 +36,4 @@
 5. Any future empirical study would have to be independently undertaken by a suitably equipped team under its own protocol and oversight; this repository does not commit to conducting it.
 
 ## Publication status
-The GitHub-hosted conceptual working paper was publicly published in this repository on 2026-11-04. It is not peer reviewed and has not been submitted to a journal, conference, or arXiv, nor archived with a DOI. It contains no original experimental results. Consider a formal tagged release and archival DOI only after the prior-art review, citations, metadata, and license decisions have been checked.
+The first GitHub-hosted conceptual working paper was published in this repository on 2026-11-04. The current revision is version 0.2.1, dated 2026-11-05. It is not peer reviewed and has not been submitted to a journal, conference, or arXiv, nor archived with a DOI. It contains no original experimental results. Consider a formal tagged release and archival DOI only after the prior-art review, citations, metadata, and license decisions have been checked.
