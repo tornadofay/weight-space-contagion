@@ -46,7 +46,7 @@ The donor-guided scenario intersects established work on model-merging backdoors
 
 - **Marker:** a benign, measurable behavior specified before evaluation.
 - **Carrier:** a model whose parameter state encodes or implements the marker.
-- **Transmission:** a parameter-changing operation causes a distinct recipient to express the marker; copying the source checkpoint is excluded.
+- **Transmission:** a parameter-changing operation changes a distinct recipient's own base parameters, and the recipient independently expresses the marker after transfer-time components are removed; copying the source checkpoint is excluded.
 - **Inheritance:** the recipient independently retains it after the source is removed.
 - **Generational reproduction:** the recipient serves as the source of another validated transfer.
 - **Autonomy:** a stronger claim requiring evidence that carrier-encoded information, rather than operator/editor knowledge or fixed external logic, causally enables and directs reproduction.
