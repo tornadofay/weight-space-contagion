@@ -1,6 +1,6 @@
 # Preliminary Related-Work Review
 
-**Review date:** 2026-11-04  
+**Review date:** 2026-11-05  
 **Status:** Preliminary, web-based, non-systematic review  
 **Purpose:** Identify adjacent work, prevent novelty overclaims, and define the next systematic search.
 
@@ -136,9 +136,9 @@ The authors study positional conditions, including length-related activation, th
 
 **Meade, Nicholas; Patel, Arkil; Reddy, Siva (2025). “Investigating Adversarial Trigger Transfer in Large Language Models.”** *Transactions of the Association for Computational Linguistics* 13 (2025): 953–979. [ACL Anthology](https://aclanthology.org/2025.tacl-1.45/) · [DOI: 10.1162/tacl.a.27](https://doi.org/10.1162/tacl.a.27).
 
-The authors evaluate adversarial trigger transfer among 13 open models and report poor and inconsistent transfer.
+The authors evaluate adversarial input-trigger transfer among 13 open models and report poor and inconsistent transfer of those triggers.
 
-**Relevance and distinction:** This is not weight-space behavior transplantation. It is relevant because it cautions against assuming that an activation condition found in a donor will transfer unchanged to a recipient. Trigger portability, functional behavior transfer, and recipient-side retention are separate properties.
+**Relevance and distinction:** This is not weight-space behavior transplantation. It cautions specifically against assuming that an adversarial input-trigger sequence optimized on one model will work unchanged on another. It does not establish whether a condition-dependent behavior transferred through parameter editing will be retained by a recipient. Trigger portability, functional behavior transfer, and recipient-side retention are separate properties.
 
 ## 17. Limitations of parameter-based editing
 
