@@ -26,7 +26,7 @@ Keep these claims separate:
 Do not call a result autonomous merely because an automated tool executed it.
 
 ## 4. Research integrity
-- Predeclare target, benign marker, transfer protocol, controls, primary metrics, holdout policy, resource budget, success criteria, and analysis method before holdout evaluation.
+- For any future independent study, the responsible team should predeclare its target, benign marker, transfer protocol, controls, primary metrics, holdout policy, resource budget, success criteria, and analysis method before holdout evaluation. This is a standard for research integrity, not a commitment by the repository author to conduct a study.
 - Keep development probes separate from holdout evaluation.
 - Preserve negative, null, failed, and contradictory outcomes.
 - Record source and recipient checkpoint identities and hashes, architecture, tensor shapes/dtypes, editor identity, prompts, tools, transformations, output hashes, resource use, and evaluation results.
@@ -34,7 +34,7 @@ Do not call a result autonomous merely because an automated tool executed it.
 - Do not infer generality, autonomy, scalability, or real-world risk from a single toy-model result.
 
 ## 5. Safety and containment
-- Initial research is limited to offline, synthetic, owner-controlled models and harmless behavioral markers.
+- Any future independent study must be limited to offline, synthetic, owner-controlled models and harmless behavioral markers.
 - No external network propagation, vulnerability exploitation, credential collection, unauthorized access, stealth, persistence, evasion, external scanning, or uncontrolled propagation.
 - Do not publish a deployable self-propagating payload or operational malware-construction instructions.
 - Use immutable source checkpoints, hashes, bounded interventions, explicit allowlists, designated output directories, rollback, and manual stop controls.
