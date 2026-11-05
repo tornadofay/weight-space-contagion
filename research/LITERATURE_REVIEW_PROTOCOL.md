@@ -2,6 +2,7 @@
 
 **Version:** 0.1  
 **Prepared:** 2026-11-04  
+**Last updated:** 2026-11-05  
 **Status:** Preliminary review guide; systematic search not completed. This document does not imply a commitment by the repository author to perform an exhaustive review or experiments.
 
 ## Objective
