@@ -4,8 +4,8 @@ title: "Weight-Space Contagion: A Problem Statement and Threat Model for Conditi
 type: other
 authors:
   - name: "tornadofay"
-version: "0.2.0"
-date-released: 2026-11-04
+version: "0.2.1"
+date-released: 2026-11-05
 abstract: >-
   A conceptual problem statement describing a hypothetical donor-guided
   transfer of condition-dependent behavior into a distinct recipient model's
